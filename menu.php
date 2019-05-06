@@ -10,9 +10,10 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.php">Homepage</a></li>
-										<li><a href="login-input.php">Login</a></li>
-										<li><a href="reserve.php">診察予約</a></li>
+										<li><a href="index.php">メイン TopPage</a></li>
+										<li><a href="login-input.php">ログイン Login</a></li>
+										<li><a href="reserve.php">診察予約 Reserve</a></li>
+										<li><a href="reserve.php">問診情報 Symptoms</a></li>
 										<li>
 											<span class="opener">Submenu</span>
 											<ul>
@@ -35,7 +36,7 @@
 										</li>
 										<li><a href="#">Maximus Erat</a></li>
 										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">ユーザ情報</a></li>
+										<li><a href="#">ユーザ情報 UserInfo</a></li>
 										<li><a href="elements.html">Elements</a></li>
 									</ul>
 								</nav>

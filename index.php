@@ -21,9 +21,9 @@
 					<div class="content">
 						<header>
 							<h1>MARCS</h1>
-							<p>MedicAl Record Control System</p>
+							<p>MedicAl Record Control System ＜マークス＞</p>
 						</header>
-						<p>診察の予約、LINE呼び出し通知、問診情報を事前に送ることができます。問診情報を入力しておくと、言葉が通じない場合でも、症状を伝える事ができます。</p>
+						<p>診察の予約、LINE呼び出し通知、問診情報を事前に送ることができます。問診情報を入力しておくと、外国人など言葉が通じない場合でも、症状を伝える事ができます。</p>
 						<ul class="actions">
 							<li><a href="login-input.php" class="button big">LOGIN</a></li>
 						</ul>
