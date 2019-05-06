@@ -20,13 +20,12 @@
 				<section id="banner">
 					<div class="content">
 						<header>
-							<h1>Hi, I’m Editorial<br />
-							by HTML5 UP</h1>
-							<p>A free and fully responsive site template</p>
+							<h1>MARCS</h1>
+							<p>MedicAl Record Control System</p>
 						</header>
-						<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+						<p>診察の予約、LINE呼び出し通知、問診情報を事前に送ることができます。問診情報を入力しておくと、言葉が通じない場合でも、症状を伝える事ができます。</p>
 						<ul class="actions">
-							<li><a href="#" class="button big">Learn More</a></li>
+							<li><a href="login-input.php" class="button big">LOGIN</a></li>
 						</ul>
 					</div>
 					<span class="image object">
