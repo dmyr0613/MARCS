@@ -35,8 +35,6 @@
 											</ul>
 										</li>
 										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">ユーザ情報 UserInfo</a></li>
 										<li><a href="elements.html">Elements</a></li>
 									</ul>
 								</nav>
