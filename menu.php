@@ -13,7 +13,7 @@
 										<li><a href="index.php">メイン TopPage</a></li>
 										<li><a href="login-input.php">ログイン Login</a></li>
 										<li><a href="reserve.php">診察予約 Reserve</a></li>
-										<li><a href="reserve.php">問診情報 Symptoms</a></li>
+										<li><a href="userinfo.php">問診情報 Symptoms</a></li>
 										<li>
 											<span class="opener">Submenu</span>
 											<ul>
@@ -23,18 +23,7 @@
 												<li><a href="#">Feugiat Veroeros</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
+										<li><a href="userinfo.php">ユーザ情報 UserInfo</a></li>
 										<li><a href="elements.html">Elements</a></li>
 									</ul>
 								</nav>
