@@ -52,11 +52,7 @@ foreach ($events as $event) {
   }
   if ($inputText == 'RESERVE'){
     //リッチメニューから「病院からのお知らせ」
-    $messageStr = '外来診療日：月曜日～金曜日（祝日年末年始を除く） ';
-    $messageStr = $messageStr . "\r\n" . '午前：08:00～11:00';
-    $messageStr = $messageStr . "\r\n" . '午後：12:00～15:00（予約のみ）';
-    $messageStr = $messageStr . "\r\n";
-    $messageStr = $messageStr . "\r\n" . '※初診の場合は、かかりつけ医からの当院宛の紹介状をお持ちください。';
+    $messageStr = 'https://sbs-marcs.herokuapp.com/main.php' . $userId;
     $bot->replyText($event->getReplyToken(), $messageStr);
   }
 
