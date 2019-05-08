@@ -11,8 +11,38 @@
 				<!-- reserveMain -->
 				<section id="reserveMain">
 					<?php
+					if (!empty($_GET['line_id'])) {
+						//POSTでLINE_IDが渡された場合は、LINE_IDからユーザを取得
+						unset($_SESSION['kanja']);
+
+						//localhost mySql
+						$pdo=new PDO('mysql:host=localhost;dbname=marcs;charset=utf8', 'sbs', 'sbs_toro');
+
+						//Heroku PostgresSQL
+						// $dsn = 'pgsql:dbname=d13p6kmhdcirvm host=ec2-174-129-208-118.compute-1.amazonaws.com port=5432';
+						// $user = 'gkijtxlavebgol';
+						// $password = 'ecff643bfa3612a94627c9d668f867a06ce4b86e4a69f8a42d981af26c50a505';
+						// $pdo = new PDO($dsn, $user, $password);
+
+						$sql=$pdo->prepare('select * from kanja where line_id=?');
+						$sql->execute([$_GET['line_id']]);
+
+						error_log("TEST");
+
+						foreach ($sql as $row) {
+							$_SESSION['kanja']=[
+								'no'=>$row['no'],
+								'kanja_id'=>$row['kanja_id'],
+								'name'=>$row['name'],
+								'password'=>$row['password'],
+								'line_id'=>$row['line_id'],
+								'line_name'=>$row['line_name']];
+						}
+					}
+
 					if (isset($_SESSION['kanja'])) {
 					?>
+
 						<!-- ログイン中であれば、予約取得画面を表示する。 -->
 						<header>
 							<p>希望する診察時間を選択して下さい。</p>
@@ -67,8 +97,9 @@
 
 					<?PHP
 					} else {
+
+						echo '<p>ログインして下さい。</p>';
 						echo '<ul class="actions">';
-						echo '<li>ログインして下さい。</li><br>';
 						echo '<li><a href="login-input.php" class="button big">LOGIN</a></li>';
 						echo '</ul>';
 					}

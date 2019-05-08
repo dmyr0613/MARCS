@@ -34,9 +34,15 @@
 							'line_name'=>$row['line_name']];
 					}
 					if (isset($_SESSION['kanja'])) {
-						echo 'ようこそ、', $_SESSION['kanja']['name'], ' さん。';
+						echo '<p>ようこそ、', $_SESSION['kanja']['name'], ' さん。</p>';
+						echo '<ul class="actions">';
+						echo '<li><a href="main.php" class="button big">TOPPAGE</a></li>';
+						echo '</ul>';
 					} else {
-						echo 'ログイン名またはパスワードが違います。';
+						echo '<p>ログイン名またはパスワードが違います。</p>';
+						echo '<ul class="actions">';
+						echo '<li><a href="login-input.php" class="button big">戻る</a></li>';
+						echo '</ul>';
 					}
 					?>
 				</section>

@@ -26,6 +26,10 @@ try {
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
+
+  //ユーザIDを表示
+  error_log($event->getUserID());
+
   // MessageEventクラスのインスタンスでなければ処理をスキップ
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
@@ -37,7 +41,28 @@ foreach ($events as $event) {
     continue;
   }
   // オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
+  // $bot->replyText($event->getReplyToken(), $event->getText());
+
+  //ユーザID取得
+  $userId = $event->getUserID();
+
+  if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage) {
+    //入力されたテキストを取得
+    $inputText = $event->getText();
+  }
+  if ($inputText == 'RESERVE'){
+    //リッチメニューから「病院からのお知らせ」
+    $messageStr = '外来診療日：月曜日～金曜日（祝日年末年始を除く） ';
+    $messageStr = $messageStr . "\r\n" . '午前：08:00～11:00';
+    $messageStr = $messageStr . "\r\n" . '午後：12:00～15:00（予約のみ）';
+    $messageStr = $messageStr . "\r\n";
+    $messageStr = $messageStr . "\r\n" . '※初診の場合は、かかりつけ医からの当院宛の紹介状をお持ちください。';
+    $bot->replyText($event->getReplyToken(), $messageStr);
+  }
+
+
+
+
 }
 
 // テキストを返信。引数はLINEBot、返信先、テキスト

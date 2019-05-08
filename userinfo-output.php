@@ -41,7 +41,11 @@
 								'line_id'=>$_REQUEST['line_id'],
 								'line_name'=>$_REQUEST['line_name']];
 
-							echo 'ユーザ情報を更新しました。';
+							echo '<p>ユーザ情報を更新しました。</p>';
+							echo '<ul class="actions">';
+							echo '<li><a href="userinfo.php" class="button big">戻る</a></li>';
+							echo '</ul>';
+
 						} else {
 							// 新規ユーザ登録
 							$sql=$pdo->prepare('insert into kanja values(null, ?, ?, ?, ?, ?, null, null)');
