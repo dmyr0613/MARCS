@@ -12,16 +12,16 @@
 				<section id="loginpage">
 					<?php
 					unset($_SESSION['kanja']);
-					// $pdo=new PDO('mysql:host=localhost;dbname=marcs;charset=utf8', 'sbs', 'sbs_toro');
 
-					// $dsn='postgres://gkijtxlavebgol:ecff643bfa3612a94627c9d668f867a06ce4b86e4a69f8a42d981af26c50a505@ec2-174-129-208-118.compute-1.amazonaws.com:5432/d13p6kmhdcirvm';
-					// $pdo = new PDO($dsn);
+					//localhost mySql
+				  $pdo=new PDO('mysql:host=localhost;dbname=marcs;charset=utf8', 'sbs', 'sbs_toro');
 
-					$dsn = 'pgsql:dbname=d13p6kmhdcirvm host=ec2-174-129-208-118.compute-1.amazonaws.com port=5432';
-					$user = 'gkijtxlavebgol';
-					$password = 'ecff643bfa3612a94627c9d668f867a06ce4b86e4a69f8a42d981af26c50a505';
-					$pdo = new PDO($dsn, $user, $password);
-							
+				  //Heroku PostgresSQL
+				  // $dsn = 'pgsql:dbname=d13p6kmhdcirvm host=ec2-174-129-208-118.compute-1.amazonaws.com port=5432';
+				  // $user = 'gkijtxlavebgol';
+				  // $password = 'ecff643bfa3612a94627c9d668f867a06ce4b86e4a69f8a42d981af26c50a505';
+				  // $pdo = new PDO($dsn, $user, $password);
+
 					$sql=$pdo->prepare('select * from kanja where kanja_id=? and password=?');
 					$sql->execute([$_REQUEST['kanja_id'], $_REQUEST['password']]);
 					foreach ($sql as $row) {
