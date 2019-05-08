@@ -50,12 +50,55 @@ foreach ($events as $event) {
     //入力されたテキストを取得
     $inputText = $event->getText();
   }
-  if ($inputText == 'RESERVE'){
-    //リッチメニューから「診察予約」
+  if ($inputText == '診察予約'){
     // LINE_IDを引数にして、URLを返す
+
     // $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=' . $userId;
     $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=222222222';
+    $bot->replyText($event->getReplyToken(), $messageStr);
 
+  } elseif($SectionName == 'お知らせ') {
+    $messageStr = '診療日：月曜日～金曜日（祝日年末年始を除く） ';
+    $messageStr = $messageStr . "\r\n" . '午前：08:00～11:00';
+    $messageStr = $messageStr . "\r\n" . '午後：12:00～15:00（予約のみ）';
+    $messageStr = $messageStr . "\r\n";
+    $messageStr = $messageStr . "\r\n" . '054-283-1450（代表）';
+    $bot->replyText($event->getReplyToken(), $messageStr);
+
+  } elseif($SectionName == 'MARCS') {
+    $messageStr = 'https://sbs-marcs.herokuapp.com/main.php';
+    $bot->replyText($event->getReplyToken(), $messageStr);
+
+  } elseif($SectionName == '診察状況') {
+
+    // PrimeKarte APIにアクセスし診察待ち状況を取得
+    $section_id = 2;
+    //時間を取得
+    date_default_timezone_set('Asia/Tokyo');
+    $reqtime = date("His");
+    error_log($reqtime);
+    if ($reqtime > '140000' or $reqtime < '083000') {
+      error_log("診察時間外のため、テスト的に10:30固定で問合せ");
+      $reqtime = '103000';
+    }
+    $jsonString = file_get_contents('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('総合内科'));
+    error_log('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('総合内科'));
+    // 文字列を連想配列に変換
+    $obj = json_decode($jsonString, true);
+    $messageStr = '現在の診察状況';
+    foreach ($obj as $key => $val){
+      error_log($key);
+      $messageStr = $messageStr . "\r\n";
+      // $messageStr = $messageStr . "\r\n" . '診察室：' . $val["rName"];
+      $messageStr = $messageStr . "\r\n" . '現在診察中：' . $val["curNo"];
+      $messageStr = $messageStr . "\r\n" . 'もうすぐ呼ばれる方：' . "\r\n" . $val["waitNo01"];
+      if ($val["waitNo02"]>0) {
+        $messageStr = $messageStr . '、' . $val["waitNo02"];
+      }
+      if ($val["waitNo03"]>0) {
+        $messageStr = $messageStr . '、' . $val["waitNo03"];
+      }
+    }
     $bot->replyText($event->getReplyToken(), $messageStr);
   }
 
