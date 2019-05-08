@@ -11,8 +11,7 @@
 				<!-- reserveMain -->
 				<section id="reserveMain">
 					<?php
-					$pdo=new PDO('mysql:host=localhost;dbname=marcs;charset=utf8',
-						'sbs', 'sbs_toro');
+					$pdo=new PDO('mysql:host=localhost;dbname=marcs;charset=utf8', 'sbs', 'sbs_toro');
 					if (isset($_SESSION['kanja'])) {
 
 						// ログイン中であれば、KANJAテーブルに予約時間をUPDATE。
