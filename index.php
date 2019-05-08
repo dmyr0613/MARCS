@@ -52,7 +52,7 @@ foreach ($events as $event) {
   }
   if ($inputText == 'RESERVE'){
     //リッチメニューから「診察予約」
-    // LINE_IDを引数にしてURLを返す
+    // LINE_IDを引数にして、URLを返す
     // $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=' . $userId;
     $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=222222222';
 
@@ -60,9 +60,11 @@ foreach ($events as $event) {
   }
 
 
-
-
 }
+
+
+
+
 
 // テキストを返信。引数はLINEBot、返信先、テキスト
 function replyTextMessage($bot, $replyToken, $text) {
