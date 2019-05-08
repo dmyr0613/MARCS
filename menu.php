@@ -10,10 +10,10 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.php">メイン TopPage</a></li>
+										<li><a href="main.php">メイン TopPage</a></li>
 										<li><a href="login-input.php">ログイン Login</a></li>
 										<li><a href="reserve.php">診察予約 Reserve</a></li>
-										<li><a href="userinfo.php">問診情報 Symptoms</a></li>
+										<li><a href="#">問診情報 Symptoms</a></li>
 										<li>
 											<span class="opener">Submenu</span>
 											<ul>
