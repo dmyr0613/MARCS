@@ -51,8 +51,11 @@ foreach ($events as $event) {
     $inputText = $event->getText();
   }
   if ($inputText == 'RESERVE'){
-    //リッチメニューから「病院からのお知らせ」
-    $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=' . $userId;
+    //リッチメニューから「診察予約」
+    // LINE_IDを引数にしてURLを返す
+    // $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=' . $userId;
+    $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=222222222';
+
     $bot->replyText($event->getReplyToken(), $messageStr);
   }
 
