@@ -57,7 +57,7 @@ foreach ($events as $event) {
     $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=222222222';
     $bot->replyText($event->getReplyToken(), $messageStr);
 
-  } elseif($SectionName == 'お知らせ') {
+  } elseif($inputText == 'お知らせ') {
     $messageStr = '診療日：月曜日～金曜日（祝日年末年始を除く） ';
     $messageStr = $messageStr . "\r\n" . '午前：08:00～11:00';
     $messageStr = $messageStr . "\r\n" . '午後：12:00～15:00（予約のみ）';
@@ -65,11 +65,11 @@ foreach ($events as $event) {
     $messageStr = $messageStr . "\r\n" . '054-283-1450（代表）';
     $bot->replyText($event->getReplyToken(), $messageStr);
 
-  } elseif($SectionName == 'MARCS') {
+  } elseif($inputText == 'MARCS') {
     $messageStr = 'https://sbs-marcs.herokuapp.com/main.php';
     $bot->replyText($event->getReplyToken(), $messageStr);
 
-  } elseif($SectionName == '診察状況') {
+  } elseif($inputText == '診察状況') {
 
     // PrimeKarte APIにアクセスし診察待ち状況を取得
     $section_id = 2;
