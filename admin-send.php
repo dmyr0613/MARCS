@@ -28,7 +28,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
           if (!empty($_REQUEST)) {
             //引数でLINE_IDを取得
             $key = $_REQUEST['line_id'];
-            $message = "もうすぐ診察の時間です。外出されている場合は、来院して頂きますようお願いします。"
+            $message = "もうすぐ診察の時間です。外出されている場合は、来院して頂きますようお願いします。";
 
             $response = $bot->pushMessage($key, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message));
             if (!$response->isSucceeded()) {
