@@ -36,7 +36,14 @@
 					echo '<input type="password" name="password" value="', $password, '">';
 					echo '</td></tr>';
 					echo '<tr><td>LINE ID ※入力不要</td><td>';
-					echo '<input type="text" name="line_id" value="', $line_id, '" readonly="readonly">';
+
+					if (!empty($_REQUEST)) {
+						//Reserve.phpからLINE_IDを渡されている場合
+						echo '<input type="text" name="line_id" value="', $_REQUEST['line_id'], '" readonly="readonly">';
+					} else {
+						echo '<input type="text" name="line_id" value="', $line_id, '" readonly="readonly">';
+					}
+					
 					echo '</td></tr>';
 					echo '<tr><td>LINE 名称</td><td>';
 					echo '<input type="text" name="line_name" value="', $line_name, '">';

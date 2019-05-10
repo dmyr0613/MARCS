@@ -98,10 +98,22 @@
 					<?PHP
 					} else {
 
-						echo '<p>ログインして下さい。</p>';
-						echo '<ul class="actions">';
-						echo '<li><a href="login-input.php" class="button big">LOGIN</a></li>';
-						echo '</ul>';
+						if (!empty($_GET['line_id'])) {
+							//Line_idが渡されている場合で、ユーザが存在しない場合は、新規ユーザ登録画面へ
+							echo '<p>ユーザ情報の新規登録をお願いします。</p>';
+							echo '<form action="userinfo.php" method="post">';				//送信用のpost
+							echo '<ul class="actions">';
+							echo '<input type="hidden" name="line_id" value="' . $_GET['line_id'] . '">';	//送信用の引数
+							echo '<input type="submit" class="button big" value="ユーザ情報登録">';
+							echo '</ul>';
+							echo '</form>';
+						} else {
+							echo '<ul class="actions">';
+							echo '<li>ログインして下さい。</li><br>';
+							echo '<li><a href="admin-login.php" class="button big">LOGIN</a></li>';
+							echo '</ul>';
+						}
+
 					}
 					?>
 				</section>
