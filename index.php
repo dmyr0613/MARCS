@@ -86,19 +86,17 @@ foreach ($events as $event) {
     // 文字列を連想配列に変換
     $obj = json_decode($jsonString, true);
     $messageStr = '現在の診察状況';
-    foreach ($obj as $key => $val){
-      error_log($key);
-      $messageStr = $messageStr . "\r\n";
-      // $messageStr = $messageStr . "\r\n" . '診察室：' . $val["rName"];
-      $messageStr = $messageStr . "\r\n" . '現在診察中：' . $val["curNo"];
-      $messageStr = $messageStr . "\r\n" . 'もうすぐ呼ばれる方：' . "\r\n" . $val["waitNo01"];
-      if ($val["waitNo02"]>0) {
-        $messageStr = $messageStr . '、' . $val["waitNo02"];
-      }
-      if ($val["waitNo03"]>0) {
-        $messageStr = $messageStr . '、' . $val["waitNo03"];
-      }
+    $messageStr = $messageStr . "\r\n";
+    // $messageStr = $messageStr . "\r\n" . '診察室：' . $val["rName"];
+    $messageStr = $messageStr . "\r\n" . '現在診察中：' . $val["curNo"];
+    $messageStr = $messageStr . "\r\n" . 'もうすぐ呼ばれる方：' . "\r\n" . $val["waitNo01"];
+    if ($val["waitNo02"]>0) {
+      $messageStr = $messageStr . '、' . $val["waitNo02"];
     }
+    if ($val["waitNo03"]>0) {
+      $messageStr = $messageStr . '、' . $val["waitNo03"];
+    }
+
     $bot->replyText($event->getReplyToken(), $messageStr);
   }
 
