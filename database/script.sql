@@ -8,7 +8,7 @@ create table kanja (
   kanja_id varchar(100) not null unique,
 	name varchar(100) not null,
 	password varchar(100) not null,
-	line_id int,
+	line_id varchar(100) not null,
   line_name varchar(100),
   facility_code varchar(50),
   yoyaku_datetime varchar(10)
@@ -17,7 +17,7 @@ create table kanja (
 create table kanja_line (
   no int auto_increment primary key,
   kanja_id int not null,
-	line_id int not null,
+	line_id varchar(100) not null,
   line_name varchar(100) not null
 );
 
