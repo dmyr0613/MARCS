@@ -4,7 +4,6 @@ grant all on marcs.* to 'sbs'@'localhost' identified by 'sbs_toro';
 use marcs;
 
 create table kanja (
-	no SERIAL primary key,
   kanja_id varchar(100) not null unique,
 	name varchar(100) not null,
 	password varchar(100) not null,
@@ -29,9 +28,10 @@ create table facility (
 );
 
 
-insert into kanja values(1, '9000001', '駿河　葵', '9000001', 'U657e8de8b409504ac329af7ebcefc723', '駿河LINE', '', '');
-insert into kanja values(2, '9000002', '静岡　菜々子', '9000002', '222222222', '菜々子LINE', '', '');
-insert into kanja values(3, '9000003', '菊川　良子', '9000003', '333333333', '菊川LINE', '', '');
+-- insert into kanja values('9000001', '駿河　葵', '9000001', 'U657e8de8b409504ac329af7ebcefc723', '駿河LINE', '', '');
+insert into kanja values('9000001', '駿河　葵', '9000001', '111111111', '駿河LINE', '', '');
+insert into kanja values('9000002', '静岡　菜々子', '9000002', '222222222', '菜々子LINE', '', '');
+insert into kanja values('9000003', '菊川　良子', '9000003', '333333333', '菊川LINE', '', '');
 
 insert into kanja_line values(null, '9000001', '111111111', '駿河LINE');
 insert into kanja_line values(null, '9000002', '222222222', '菜々子LINE');

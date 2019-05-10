@@ -45,7 +45,7 @@
 					}
 
 					echo '</td></tr>';
-					echo '<tr><td>LINE 名称</td><td>';
+					echo '<tr><td>メールアドレス</td><td>';
 					echo '<input type="text" name="line_name" value="', $line_name, '">';
 					echo '</td></tr>';
 					echo '</table>';
