@@ -65,6 +65,14 @@
 								$_REQUEST['line_id'],
 								$_REQUEST['line_name']]);
 
+							//セッション情報を更新
+							$_SESSION['kanja']=[
+								'kanja_id'=>$_REQUEST['kanja_id'],
+								'name'=>$_REQUEST['name'],
+								'password'=>$_REQUEST['password'],
+								'line_id'=>$_REQUEST['line_id'],
+								'line_name'=>$_REQUEST['line_name']];
+
 								echo '<p>ユーザ情報を更新しました。</p>';
 								echo '<ul class="actions">';
 								echo '<li><a href="reserve.php" class="button big">診察予約</a></li>';
