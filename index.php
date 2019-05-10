@@ -85,7 +85,7 @@ foreach ($events as $event) {
     error_log('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
     // 文字列を連想配列に変換
     $obj = json_decode($jsonString, true);
-    error_log($obj);
+
     $messageStr = '現在の診察状況';
     foreach ($obj as $key => $val){
       error_log($key);

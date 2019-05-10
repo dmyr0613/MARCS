@@ -110,10 +110,10 @@
 						} else {
 							echo '<p>ログインして下さい。</p>';
 							echo '<ul class="actions">';
-							echo '<li><a href="admin-login.php" class="button big">LOGIN</a></li>';
+							echo '<li><a href="login-input.php" class="button big">LOGIN</a></li>';
 							echo '</ul>';
 						}
-						
+
 					}
 					?>
 				</section>

@@ -65,7 +65,10 @@
 								$_REQUEST['line_id'],
 								$_REQUEST['line_name']]);
 
-							echo 'ユーザ情報を登録しました。';
+								echo '<p>ユーザ情報を更新しました。</p>';
+								echo '<ul class="actions">';
+								echo '<li><a href="reserve.php" class="button big">診察予約</a></li>';
+								echo '</ul>';
 						}
 
 					/*
