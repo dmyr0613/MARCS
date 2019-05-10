@@ -87,9 +87,9 @@ foreach ($events as $event) {
     $obj = json_decode($jsonString, true);
 
     print_r($obj);
-    $messageStr = '現在の診察状況' . $obj;
+    var_dump($obj);
 
-    // $messageStr = '現在の診察状況';
+    $messageStr = '現在の診察状況';
     foreach ($obj as $key => $val){
       error_log($key);
       $messageStr = $messageStr . "\r\n";
