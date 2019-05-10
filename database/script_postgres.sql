@@ -4,7 +4,7 @@ grant all on marcs.* to 'sbs'@'localhost' identified by 'sbs_toro';
 use marcs;
 
 create table kanja (
-	no int primary key,
+	no SERIAL primary key,
   kanja_id varchar(100) not null unique,
 	name varchar(100) not null,
 	password varchar(100) not null,
@@ -15,7 +15,7 @@ create table kanja (
 );
 
 create table kanja_line (
-  no int auto_increment primary key,
+  no SERIAL auto_increment primary key,
   kanja_id int not null,
 	line_id int not null,
   line_name varchar(100) not null

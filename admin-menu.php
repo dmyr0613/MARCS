@@ -10,10 +10,9 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="main.php">メイン TopPage</a></li>
-										<li><a href="login-input.php">ログイン Login</a></li>
-										<li><a href="reserve.php">診察予約 Reserve</a></li>
-										<li><a href="#">問診情報 Symptoms</a></li>
+										<li><a href="admin-login.php">ログイン Login</a></li>
+										<li><a href="admin-list.php">予約一覧 Reserve List</a></li>
+										<li><a href="admin-facility-info.php">施設情報 Facility Info</a></li>
 										<li>
 											<span class="opener">Submenu</span>
 											<ul>
@@ -23,13 +22,11 @@
 												<li><a href="#">Feugiat Veroeros</a></li>
 											</ul>
 										</li>
-										<li><a href="userinfo.php">ユーザ情報 User Info</a></li>
 										<li><a href="elements.html">Elements</a></li>
 									</ul>
 								</nav>
 
 						</div>
 					</div>
-
 
 </html>
