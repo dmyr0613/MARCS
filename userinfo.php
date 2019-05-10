@@ -43,7 +43,7 @@
 					} else {
 						echo '<input type="text" name="line_id" value="', $line_id, '" readonly="readonly">';
 					}
-					
+
 					echo '</td></tr>';
 					echo '<tr><td>LINE 名称</td><td>';
 					echo '<input type="text" name="line_name" value="', $line_name, '">';

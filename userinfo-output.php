@@ -19,7 +19,7 @@
 				  $user = 'gkijtxlavebgol';
 				  $password = 'ecff643bfa3612a94627c9d668f867a06ce4b86e4a69f8a42d981af26c50a505';
 				  $pdo = new PDO($dsn, $user, $password);
-					
+
 /*
 					if (isset($_SESSION['kanja'])) {
 
@@ -56,9 +56,10 @@
 
 						} else {
 							// 新規ユーザ登録
-							$sql=$pdo->prepare('insert into kanja values(null, ?, ?, ?, ?, ?, null, null)');
+							// $sql=$pdo->prepare('insert into kanja values(null, ?, ?, ?, ?, ?, null, null)');
+							$sql=$pdo->prepare('insert into kanja values(9, ?, ?, ?, ?, ?, null, null)');
 							$sql->execute([
-								$_SESSION['kanja']['kanja_id'],
+								$_REQUEST['kanja_id'],
 								$_REQUEST['name'],
 								$_REQUEST['password'],
 								$_REQUEST['line_id'],
