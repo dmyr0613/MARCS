@@ -81,13 +81,10 @@ foreach ($events as $event) {
       error_log("診察時間外のため、テスト的に10:30固定で問合せ");
       $reqtime = '103000';
     }
-    $jsonString = file_get_contents('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('総合内科'));
+    $jsonString = file_get_contents('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
     error_log('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
     // 文字列を連想配列に変換
     $obj = json_decode($jsonString, true);
-
-    print_r($obj);
-    var_dump($obj);
 
     $messageStr = '現在の診察状況';
     foreach ($obj as $key => $val){
