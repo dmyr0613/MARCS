@@ -108,12 +108,12 @@
 							echo '</ul>';
 							echo '</form>';
 						} else {
+							echo '<p>ログインして下さい。</p>';
 							echo '<ul class="actions">';
-							echo '<li>ログインして下さい。</li><br>';
 							echo '<li><a href="admin-login.php" class="button big">LOGIN</a></li>';
 							echo '</ul>';
 						}
-
+						
 					}
 					?>
 				</section>

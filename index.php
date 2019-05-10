@@ -53,8 +53,8 @@ foreach ($events as $event) {
   if ($inputText == '診察予約'){
     // LINE_IDを引数にして、URLを返す
 
-    // $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=' . $userId;
-    $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=222222222';
+    $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=' . $userId;
+    // $messageStr = 'https://sbs-marcs.herokuapp.com/reserve.php?line_id=222222222';
     $bot->replyText($event->getReplyToken(), $messageStr);
 
   } elseif($inputText == 'お知らせ') {
@@ -82,7 +82,7 @@ foreach ($events as $event) {
       $reqtime = '103000';
     }
     $jsonString = file_get_contents('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('総合内科'));
-    error_log('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('総合内科'));
+    error_log('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
     // 文字列を連想配列に変換
     $obj = json_decode($jsonString, true);
     $messageStr = '現在の診察状況';
