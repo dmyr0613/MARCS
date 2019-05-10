@@ -71,34 +71,40 @@ foreach ($events as $event) {
 
   } elseif($inputText == '診察状況') {
 
-    // PrimeKarte APIにアクセスし診察待ち状況を取得
-    $section_id = 2;
-    //時間を取得
-    date_default_timezone_set('Asia/Tokyo');
-    $reqtime = date("His");
-    error_log($reqtime);
-    if ($reqtime > '140000' or $reqtime < '083000') {
-      error_log("診察時間外のため、テスト的に10:30固定で問合せ");
-      $reqtime = '103000';
-    }
-    $jsonString = file_get_contents('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
-    error_log('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
-    // 文字列を連想配列に変換
-    $obj = json_decode($jsonString, true);
+    // // PrimeKarte APIにアクセスし診察待ち状況を取得
+    // $section_id = 2;
+    // //時間を取得
+    // date_default_timezone_set('Asia/Tokyo');
+    // $reqtime = date("His");
+    // error_log($reqtime);
+    // if ($reqtime > '140000' or $reqtime < '083000') {
+    //   error_log("診察時間外のため、テスト的に10:30固定で問合せ");
+    //   $reqtime = '103000';
+    // }
+    // $jsonString = file_get_contents('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
+    // error_log('https://primearch.jp/displaybd/db/last/0000000001/1/20180507/000000/' . $reqtime . '?name=' . base64_encode('内科'));
+    // // 文字列を連想配列に変換
+    // $obj = json_decode($jsonString, true);
+    //
+    // $messageStr = '現在の診察状況';
+    // foreach ($obj as $key => $val){
+    //   error_log($key);
+    //   $messageStr = $messageStr . "\r\n";
+    //   $messageStr = $messageStr . "\r\n" . '現在診察中：' . $val["curNo"];
+    //   $messageStr = $messageStr . "\r\n" . 'もうすぐ呼ばれる方：' . "\r\n" . $val["waitNo01"];
+    //   if ($val["waitNo02"]>0) {
+    //     $messageStr = $messageStr . '、' . $val["waitNo02"];
+    //   }
+    //   if ($val["waitNo03"]>0) {
+    //     $messageStr = $messageStr . '、' . $val["waitNo03"];
+    //   }
+    // }
 
     $messageStr = '現在の診察状況';
-    foreach ($obj as $key => $val){
-      error_log($key);
-      $messageStr = $messageStr . "\r\n";
-      $messageStr = $messageStr . "\r\n" . '現在診察中：' . $val["curNo"];
-      $messageStr = $messageStr . "\r\n" . 'もうすぐ呼ばれる方：' . "\r\n" . $val["waitNo01"];
-      if ($val["waitNo02"]>0) {
-        $messageStr = $messageStr . '、' . $val["waitNo02"];
-      }
-      if ($val["waitNo03"]>0) {
-        $messageStr = $messageStr . '、' . $val["waitNo03"];
-      }
-    }
+    $messageStr = $messageStr . "\r\n";
+    $messageStr = $messageStr . "\r\n" . '現在診察中：69';
+    $messageStr = $messageStr . "\r\n" . 'もうすぐ呼ばれる方：72、74、75';
+
     $bot->replyText($event->getReplyToken(), $messageStr);
   }
 
