@@ -100,7 +100,7 @@
 
 						if (!empty($_GET['line_id'])) {
 							//Line_idが渡されている場合で、ユーザが存在しない場合は、新規ユーザ登録画面へ
-							echo '<p>ユーザ情報の新規登録をお願いします。</p>';
+							echo '<p>ご利用中のLINE情報からユーザ情報を取得できませんでした。お手数ですが、ユーザ情報の新規登録をお願いします。</p>';
 							echo '<form action="userinfo.php" method="post">';				//送信用のpost
 							echo '<ul class="actions">';
 							echo '<input type="hidden" name="line_id" value="' . $_GET['line_id'] . '">';	//送信用の引数
