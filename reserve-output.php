@@ -29,8 +29,8 @@
 							$_REQUEST['time'],
 							$_SESSION['kanja']['kanja_id']]);
 
-						echo '<p>', $_REQUEST['time'], ' の予約を取得しました。</p>';
-						echo '<p>続けて問診情報の入力をされる場合は、問診票入力を押して下さい。</p>';
+						echo '<p>', $_REQUEST['time'], ' の予約を取得しました。<br>';
+						echo '続けて問診情報の入力をされる場合は、問診票入力を押して下さい。</p>';
 						echo '<ul class="actions">';
 						echo '<li><a href="symptom.php" class="button big primary">問診票入力</a></li>';
 						echo '<li><a href="main.php" class="button big">TOPPAGE</a></li>';
