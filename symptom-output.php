@@ -31,6 +31,7 @@
 						//
 						// echo $_REQUEST['time'], ' の予約を取得しました。';
 						echo '<p>問診情報の登録を行いました。</p>';
+						echo '<p>診察順が近くなりましたら、LINEで通知させて頂きます。</p>';
 						echo '<ul class="actions">';
 						echo '<li><a href="main.php" class="button big">TOPPAGE</a></li>';
 						echo '</ul>';
