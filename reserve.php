@@ -92,7 +92,7 @@
 								</div>
 							</div>
 							<br>
-							<input type="submit" value="予約登録">
+							<input type="submit" class="button big primary" value="予約登録">
 						</form>
 
 					<?PHP
@@ -104,7 +104,7 @@
 							echo '<form action="userinfo.php" method="post">';				//送信用のpost
 							echo '<ul class="actions">';
 							echo '<input type="hidden" name="line_id" value="' . $_GET['line_id'] . '">';	//送信用の引数
-							echo '<input type="submit" class="button big" value="ユーザ情報登録">';
+							echo '<input type="submit" class="button big primary" value="ユーザ情報登録">';
 							echo '</ul>';
 							echo '</form>';
 						} else {

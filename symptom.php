@@ -138,7 +138,7 @@
 							</div>
 							<br><br>
 
-							<input type="submit" value="登録">
+							<input type="submit" class="button big primary" value="登録">
 						</form>
 
 					<?PHP

@@ -35,7 +35,7 @@
 					echo '<tr><td>パスワード</td><td>';
 					echo '<input type="password" name="password" value="', $password, '">';
 					echo '</td></tr>';
-					echo '<tr><td>LINE ID ※入力不要</td><td>';
+					echo '<tr><td>LINE ID</td><td>';
 
 					if (!empty($_REQUEST)) {
 						//Reserve.phpからLINE_IDを渡されている場合
@@ -49,7 +49,8 @@
 					echo '<input type="text" name="line_name" value="', $line_name, '">';
 					echo '</td></tr>';
 					echo '</table>';
-					echo '<input type="submit" value="確定">';
+					echo '<input type="submit" class="button big primary" value="登録">';
+					echo '　<a href="main.php" class="button big">TOPPAGE</a>';
 					echo '</form>';
 					?>
 				</section>
