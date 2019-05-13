@@ -36,6 +36,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
               error_log('Failed!'. $response->getHTTPStatus . ' ' . $response->getRawBody());
             }
 
+						echo $key;
+
             echo '<p>LINEに呼び出し通知を行いました。</p>';
 						echo '<ul class="actions">';
 						echo '<li><a href="admin-list.php" class="button big">戻る</a></li>';
