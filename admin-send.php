@@ -12,7 +12,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 ?>
 <?php session_start(); ?>
-<?php require 'admin-header.php'; error_log($_REQUEST['line_id']); ?>
+<?php require 'admin-header.php'; ?>
 
 <!-- Main -->
 	<div id="main">
@@ -25,20 +25,49 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 				<section id="messageSend">
 					<?php
 
+					// $obj = $_REQUEST;
+					// echo var_dump($_REQUEST);
+					// echo '<br>';
+					// foreach ($obj as $key => $val){
+					// 	// echo $key;
+					// 	// echo '<br>';
+					// 	if (substr_count($key, 'line_id') == 1) {
+					// 		echo 'LINE:' . substr($key, 8);
+					// 		echo '<br>';
+					// 	} elseif (substr_count($key, 'mail_addr') == 1) {
+					// 		//文字列にmail_addrが含まれる場合
+					// 		echo 'MAIL:' . substr($key, 10);	//MAILアドレスを抜き取ります。
+					// 		echo '<br>';
+					// 	}
+					// }
+
+					$message = "もうすぐ診察の時間です。";
+					$message = $message . "\r\n" . "外出されている場合は、来院して頂きますようお願いします。";
+
           if (!empty($_REQUEST)) {
             //引数でLINE_IDを取得
-            $key = $_REQUEST['line_id'];
-            $message = "もうすぐ診察の時間です。";
-						$message = $message . "\r\n" . "外出されている場合は、来院して頂きますようお願いします。";
+						$obj = $_REQUEST;
+						foreach ($obj as $key => $val){
+							error_log($key);
 
-            $response = $bot->pushMessage($key, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message));
-            if (!$response->isSucceeded()) {
-              error_log('Failed!'. $response->getHTTPStatus . ' ' . $response->getRawBody());
-            }
+							if (substr_count($key, 'line_id') == 1) {
+								//文字列にline_idが含まれる場合
+								$key = substr($key, 8);	//LINE_IDを抜き取ります。
+								error_log($key);
 
-						echo $key;
+								$response = $bot->pushMessage($key, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message));
+		            if (!$response->isSucceeded()) {
+		              error_log('Failed!'. $response->getHTTPStatus . ' ' . $response->getRawBody());
+		            }
+							} elseif (substr_count($key, 'mail_addr') == 1) {
+								//文字列にmail_addrが含まれる場合
+								$key = substr($key, 10);	//MAILアドレスを抜き取ります。
+								error_log($key);
+							}
 
-            echo '<p>LINEに呼び出し通知を行いました。</p>';
+						}
+
+            echo '<p>LINE通知またはメール通知を行いました。</p>';
 						echo '<ul class="actions">';
 						echo '<li><a href="admin-list.php" class="button big">戻る</a></li>';
 						echo '</ul>';
