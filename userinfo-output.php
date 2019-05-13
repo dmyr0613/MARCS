@@ -77,7 +77,7 @@
 								echo '続けて診察予約をされる場合は、診察予約を押して下さい。</p>';
 								echo '<ul class="actions">';
 								echo '<li><a href="reserve.php" class="button big primary">診察予約</a></li>';
-								echo '<li><a href="main.php" class="button big">TOPPAGE</a></li>';
+								// echo '<li><a href="main.php" class="button big">TOPPAGE</a></li>';
 								echo '</ul>';
 						}
 
