@@ -33,7 +33,8 @@
 								echo '<tr>';
 								echo '<td>', $row['kanja_id'], '</td>';
 								echo '<td>', $row['name'], '</td>';
-								echo '<td>', $row['yoyaku_datetime'], '</td>';
+								// echo '<td>', $row['yoyaku_datetime'], '</td>';
+								echo '<td>', $row['line_id'], '</td>';
 								echo '<td>';
 								echo '<input type="hidden" name="line_id" value="' . $row['line_id'] . '">';	//送信用の引数
 								echo '<input type="submit" class="button primary small" value="Send">';
