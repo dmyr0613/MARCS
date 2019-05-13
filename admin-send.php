@@ -12,7 +12,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 ?>
 <?php session_start(); ?>
-<?php require 'admin-header.php'; ?>
+<?php require 'admin-header.php'; error_log($_REQUEST['line_id']); ?>
 
 <!-- Main -->
 	<div id="main">
@@ -30,6 +30,13 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
             $key = $_REQUEST['line_id'];
             $message = "もうすぐ診察の時間です。";
 						$message = $message . "\r\n" . "外出されている場合は、来院して頂きますようお願いします。";
+
+						error_log($key);
+						error_log($message);
+
+						echo $key;
+						echo $message;
+
 
             $response = $bot->pushMessage($key, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message));
             if (!$response->isSucceeded()) {
