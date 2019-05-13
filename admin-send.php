@@ -31,13 +31,6 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
             $message = "もうすぐ診察の時間です。";
 						$message = $message . "\r\n" . "外出されている場合は、来院して頂きますようお願いします。";
 
-						error_log($key);
-						error_log($message);
-
-						echo $key;
-						echo $message;
-
-
             $response = $bot->pushMessage($key, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message));
             if (!$response->isSucceeded()) {
               error_log('Failed!'. $response->getHTTPStatus . ' ' . $response->getRawBody());
