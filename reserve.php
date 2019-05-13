@@ -47,6 +47,7 @@
 						<header>
 							<p>希望する診察時間を選択して下さい。</p>
 						</header>
+						<!-- 日付選択 -->
 						<form action="reserve-output.php" method="post">
 							<!-- 施設リスト -->
 							<div class="col-12">
@@ -81,10 +82,6 @@
 								<div class="col-4 col-12-small">
 									<input type="radio" id="time1030" name="time" value="10:30">
 									<label for="time1030">10:30</label>
-								</div>
-								<div class="col-4 col-12-small">
-									<input type="radio" id="time1100" name="time" value="11:00">
-									<label for="time1100">11:00</label>
 								</div>
 								<div class="col-4 col-12-small">
 									<input type="radio" id="time1130" name="time" value="11:30">

@@ -26,18 +26,19 @@
 							$sql=$pdo->prepare('select * from kanja where facility_code=? order by yoyaku_datetime');
 							$sql->execute([$_SESSION['facility']['facility_code']]);
 
-							echo '<form action="admin-send.php" method="post">';				//送信用のpost
+							// echo '<form action="admin-send.php" method="post">';				//送信用のpost
 							echo '<table>';
 							echo '<th>診察券番号</th><th>患者名</th><th>予約時間</th><th>LINE通知</th><th>メール通知</th>';
 							foreach ($sql as $row) {
 								echo '<tr>';
 								echo '<td>', $row['kanja_id'], '</td>';
 								echo '<td>', $row['name'], '</td>';
-								// echo '<td>', $row['yoyaku_datetime'], '</td>';
-								echo '<td>', $row['line_id'], '</td>';
+								echo '<td>', $row['yoyaku_datetime'], '</td>';
 								echo '<td>';
+								echo '<form action="admin-send.php" method="post">';				//送信用のpost
 								echo '<input type="hidden" name="line_id" value="' . $row['line_id'] . '">';	//送信用の引数
 								echo '<input type="submit" class="button primary small" value="Send">';
+								echo '</form>';
 								echo '</td>';
 								echo '<td>';
 								echo '<input type="checkbox" id="sendMail' . $row['line_id'] . '" name="sendMail' . $row['line_id'] . '">';
@@ -46,7 +47,7 @@
 								echo '</tr>';
 							}
 							echo '</table>';
-							echo '</form>';
+							// echo '</form>';
 
 						} else {
 							echo '<ul class="actions">';
