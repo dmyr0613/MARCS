@@ -29,6 +29,8 @@
 							$_REQUEST['time'],
 							$_SESSION['kanja']['kanja_id']]);
 
+						$reserveNo = 81;
+						echo '<h2>受付番号：', $reserveNo, '</h2><br>';
 						echo '<p>', $_REQUEST['time'], ' の予約を取得しました。<br>';
 						echo '続けて問診情報の入力をされる場合は、問診票入力を押して下さい。</p>';
 						echo '<ul class="actions">';
