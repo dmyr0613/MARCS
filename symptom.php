@@ -16,9 +16,6 @@
 					?>
 
 						<!-- ログイン中であれば、問診票入力画面を表示する。 -->
-						<!-- <header>
-							<p>本日はどうされましたか？</p>
-						</header> -->
 						<form action="symptom-output.php" method="post">
 
 							<!-- message1 -->
@@ -143,12 +140,10 @@
 
 					<?PHP
 					} else {
-
 						echo '<p>ログインして下さい。</p>';
 						echo '<ul class="actions">';
 						echo '<li><a href="login-input.php" class="button big">LOGIN</a></li>';
 						echo '</ul>';
-
 					}
 					?>
 				</section>
