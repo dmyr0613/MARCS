@@ -22,7 +22,7 @@ try{
 		}
 
 		//locationテーブルへINSERT
-		$sql=$pdo->prepare('insert location values(?, ?, ?)');
+		$sql=$pdo->prepare('insert into location values(?, ?, ?)');
 		$sql->execute([
 			$_GET['uuid'],
 			$_GET['lat'],
