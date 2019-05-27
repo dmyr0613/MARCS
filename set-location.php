@@ -2,6 +2,10 @@
 
 if (!empty($_GET)) {
 
+	error_log("UUID：" . $_GET['uuid']);
+	error_log("Lat：" . $_GET['lat']);
+	error_log("Lon：" . $_GET['lon']);
+	
 	//Heroku PostgresSQL
 	$dsn = 'pgsql:dbname=d13p6kmhdcirvm host=ec2-174-129-208-118.compute-1.amazonaws.com port=5432';
 	$user = 'gkijtxlavebgol';
@@ -14,7 +18,7 @@ if (!empty($_GET)) {
 		$_GET['uuid'],
 		$_GET['lat'],
 		$_GET['lon']]);
-		
+
 }
 
 ?>
