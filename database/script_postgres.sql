@@ -27,6 +27,11 @@ create table facility (
 	password varchar(100) not null
 );
 
+create table location (
+	uuid varchar(100) not null,
+	lat double precision,
+  lon double precision
+);
 
 -- insert into kanja values('9000001', '駿河　葵', '9000001', 'U657e8de8b409504ac329af7ebcefc723', '駿河LINE', '', '');
 insert into kanja values('9000001', '駿河　葵', '9000001', '111111111', '駿河LINE', '', '');
