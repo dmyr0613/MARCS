@@ -1,11 +1,13 @@
 <?php
 
+// https://sbs-marcs.herokuapp.com/set-location.php?uuid=1&lat=10&lon=20
+
 if (!empty($_GET)) {
 
 	error_log("UUID：" . $_GET['uuid']);
 	error_log("Lat：" . $_GET['lat']);
 	error_log("Lon：" . $_GET['lon']);
-	
+
 	//Heroku PostgresSQL
 	$dsn = 'pgsql:dbname=d13p6kmhdcirvm host=ec2-174-129-208-118.compute-1.amazonaws.com port=5432';
 	$user = 'gkijtxlavebgol';
@@ -13,7 +15,7 @@ if (!empty($_GET)) {
 	$pdo = new PDO($dsn, $user, $password);
 
 	//locationテーブルへINSERT
-	$sql=$pdo->prepare('insert location kanja values(?, ?, ?)');
+	$sql=$pdo->prepare('insert location values(?, ?, ?)');
 	$sql->execute([
 		$_GET['uuid'],
 		$_GET['lat'],
