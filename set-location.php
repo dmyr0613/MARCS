@@ -14,6 +14,12 @@ if (!empty($_GET)) {
 	$password = 'ecff643bfa3612a94627c9d668f867a06ce4b86e4a69f8a42d981af26c50a505';
 	$pdo = new PDO($dsn, $user, $password);
 
+	if ($pdo == null){
+		error_log("接続に失敗しました。");
+	}else{
+		error_log("接続に成功しました。");
+	}
+	
 	//locationテーブルへINSERT
 	$sql=$pdo->prepare('insert location values(?, ?, ?)');
 	$sql->execute([
