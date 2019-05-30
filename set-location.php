@@ -37,6 +37,7 @@ try{
 			$datetime,
 			$_GET['device_name']]);
 		$count = $sql->rowCount();
+		error_log($sql);
 		error_log($count);
 
 		if ($count == 0){
