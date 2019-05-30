@@ -29,7 +29,7 @@ try{
 		//locationテーブルへUPDATE
 		$sql=$pdo->prepare('update location set beacon_name=?, uuid=?, lat=?, lon=?, proximity=?, update_datetime=? where device_name=?)');
 		$sql->execute([
-			" ",
+			$_GET['beacon_name'],
 			$_GET['uuid'],
 			$_GET['lat'],
 			$_GET['lon'],
@@ -37,13 +37,14 @@ try{
 			$datetime,
 			$_GET['device_name']]);
 		$count = $sql->rowCount();
+		error_log($count);
 
 		if ($count == 0){
 			//locationテーブルへINSERT
 			$sql=$pdo->prepare('insert into location values(?, ?, ?, ?, ?, ?, ?)');
 			$sql->execute([
 				$_GET['device_name'],
-				" ",
+				$_GET['beacon_name'],
 				$_GET['uuid'],
 				$_GET['lat'],
 				$_GET['lon'],
