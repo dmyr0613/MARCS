@@ -27,7 +27,7 @@ try{
 		// https://sbs-marcs.herokuapp.com/set-location.php?device_name=abc&beacon_name=aaa&uuid=1&lat=10&lon=20&prox=near
 
 		//locationテーブルへUPDATE
-		$sql=$pdo->prepare('update location set beacon_name=?, uuid=?, lat=?, lon=?, proximity=?, update_datetime=? where device_name=?)');
+		$sql=$pdo->prepare('update location set beacon_name=?, uuid=?, lat=?, lon=?, proximity=?, update_datetime=? where device_name=?');
 		$sql->execute([
 			$_GET['beacon_name'],
 			$_GET['uuid'],
@@ -37,7 +37,7 @@ try{
 			$datetime,
 			$_GET['device_name']]);
 		$count = $sql->rowCount();
-		error_log($sql);
+		// error_log($sql->);
 		error_log($count);
 
 		if ($count == 0){
