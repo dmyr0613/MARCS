@@ -25,13 +25,30 @@ try{
 			error_log("接続に成功しました。");
 		}
 
-		//locationテーブルへINSERT
-		$sql=$pdo->prepare('insert into location values(?, ?, ?, ?)');
+		//locationテーブルへUPDATE
+		$sql=$pdo->prepare('update location set beacon_name=?, uuid=?, lat=?, lon=?, proximity=?, update_datetime=? where device_name=?)');
 		$sql->execute([
+			" ",
 			$_GET['uuid'],
 			$_GET['lat'],
 			$_GET['lon'],
-			$datetime]);
+			$_GET['prox'],
+			$datetime],
+			$_GET['device_name']);
+		$count = $sql->rowCount();
+
+		if ($count == 0){
+			//locationテーブルへINSERT
+			$sql=$pdo->prepare('insert into location values(?, ?, ?, ?, ?, ?, ?)');
+			$sql->execute([
+				$_GET['device_name'],
+				" ",
+				$_GET['uuid'],
+				$_GET['lat'],
+				$_GET['lon'],
+				$_GET['prox'],
+				$datetime]);
+		}
 
 		//DB接続情報をクリア
 		$pdo = null;

@@ -28,10 +28,13 @@ create table facility (
 );
 
 create table location (
-	uuid varchar(100) not null,
+  device_name varchar(50) not null,
+  beacon_name varchar(100),
+	uuid varchar(100),
 	lat double precision,
   lon double precision,
-  insert_datetime timestamp
+  proximity varchar(10),
+  update_datetime timestamp
 );
 
 -- insert into kanja values('9000001', '駿河　葵', '9000001', 'U657e8de8b409504ac329af7ebcefc723', '駿河LINE', '', '');
