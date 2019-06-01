@@ -63,6 +63,19 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								//文字列にmail_addrが含まれる場合
 								$key = substr($key, 10);	//MAILアドレスを抜き取ります。
 								error_log($key);
+								
+								$url = "https://api.smslink.jp/api/v1/delivery";
+								$data = array(
+								    // 'url_name' => $url_name,
+								    'phone_number' => "09076114485"
+								);
+								$content = http_build_query($data);
+								$options = array('http' => array(
+								    'method' => 'POST',
+								    'content' => $content
+								));
+								$contents = file_get_contents($url, false, stream_context_create($options));
+								
 							}
 
 						}
