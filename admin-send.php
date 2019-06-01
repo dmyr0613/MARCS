@@ -64,12 +64,12 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$key = substr($key, 10);	//MAILアドレスを抜き取ります。
 								error_log($key);
 								
-								$data1 =array();
-								$data1 = http_build_query($data1, "", "&");
-								$header = array(
-								"Content-Type: application/x-www-form-urlencoded",
-								"Content-Length: ".strlen($data1)
-								);
+// 								$data1 =array();
+// 								$data1 = http_build_query($data1, "", "&");
+// 								$header = array(
+// 								"Content-Type: application/x-www-form-urlencoded",
+// 								"Content-Length: ".strlen($data1)
+// 								);
 								
 								$url = "https://api.smslink.jp/api/v1/delivery";
 // 								$data = array(
@@ -85,7 +85,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$options = array('http' => array(
 								    'protocol_version' => '1.1',
 								    'method' => 'POST',
-								    'header' => implode("\r\n", $header),
+// 								    'header' => implode("\r\n", $header),
 								    'content' => $content
 								));
 								$contents = file_get_contents($url, false, stream_context_create($options));
