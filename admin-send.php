@@ -71,6 +71,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								);
 								$content = http_build_query($data);
 								$options = array('http' => array(
+								    'protocol_version' => '1.1',
 								    'method' => 'POST',
 								    'content' => $content
 								));
