@@ -72,11 +72,16 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								);
 								
 								$url = "https://api.smslink.jp/api/v1/delivery";
-								$data = array(
-								    // 'url_name' => $url_name,
-								    'phone_number' => "09076114485"
-								);
-								$content = http_build_query($data);
+// 								$data = array(
+// 								    'text_message' => $message,
+// 								    'phone_number' => "09076114485"
+// 								);
+// 								//JSON形式に変換
+// 								$content = json_encode($data);
+								
+								$json = '{"contacts": [{ phone_number: "09076114485" }], "text̲_message": " こんにちは"}';
+								$content = json_decode($json);
+								
 								$options = array('http' => array(
 								    'protocol_version' => '1.1',
 								    'method' => 'POST',
