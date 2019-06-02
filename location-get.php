@@ -15,6 +15,8 @@
   $sql=$pdo->prepare('select * from location order by update_datetime');
   $sql->execute();
 
+  $json_array = array();
+
   foreach ($sql as $row) {
     //JSON形式にする
     // $json_array = array(
