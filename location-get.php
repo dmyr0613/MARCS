@@ -32,7 +32,7 @@
     $row_array['uuid'] = $row['uuid'];
     $row_array['lat'] = $row['lat'];
     $row_array['lon'] = $row['lon'];
-    $row_array['prox'] = $row['prox'];
+    $row_array['prox'] = $row['proximity'];
     $row_array['update_datetime'] = $row['update_datetime'];
 
     array_push($json_array,$row_array);
