@@ -17,15 +17,26 @@
 
   foreach ($sql as $row) {
     //JSON形式にする
-    $json_array = array(
-        'device_name' => $row['device_name'],
-        'beacon_name' => $row['beacon_name'],
-        'uuid' => $row['uuid'],
-        'lat' => $row['lat'],
-        'lon' => $row['lon'],
-        'prox' => $row['prox'],
-        'update_datetime' => $row['update_datetime'],
-    );
+    // $json_array = array(
+    //     'device_name' => $row['device_name'],
+    //     'beacon_name' => $row['beacon_name'],
+    //     'uuid' => $row['uuid'],
+    //     'lat' => $row['lat'],
+    //     'lon' => $row['lon'],
+    //     'prox' => $row['prox'],
+    //     'update_datetime' => $row['update_datetime'],
+    // );
+
+    $row_array['device_name'] = $row['device_name'],
+    $row_array['beacon_name'] = $row['beacon_name'],
+    $row_array['uuid'] = $row['uuid'],
+    $row_array['lat'] = $row['lat'],
+    $row_array['lon'] = $row['lon'],
+    $row_array['prox'] = $row['prox'],
+    $row_array['update_datetime'] = $row['update_datetime'],
+
+    array_push($json_array,$row_array);
+
   }
 
   //半分おまじない。JSONで送りますよという合図
