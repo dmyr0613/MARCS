@@ -63,39 +63,32 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								//文字列にmail_addrが含まれる場合
 								$key = substr($key, 10);	//MAILアドレスを抜き取ります。
 								error_log($key);
-<<<<<<< HEAD
 
-								$url = "https://api.smslink.jp/api/v1/delivery";
-								$data = array(
-								    // 'url_name' => $url_name,
-								    'phone_number' => "09076114485"
-								);
-								$content = http_build_query($data);
-								$options = array('http' => array(
-								    'method' => 'POST',
-								    'content' => $content
-								));
-								$contents = file_get_contents($url, false, stream_context_create($options));
-=======
-								
-// 								$data1 =array();
-// 								$data1 = http_build_query($data1, "", "&");
-// 								$header = array(
-// 								"Content-Type: application/x-www-form-urlencoded",
-// 								"Content-Length: ".strlen($data1)
-// 								);
-								
-								$url = "https://api.smslink.jp/api/v1/delivery";
+// 								$url = "https://api.smslink.jp/api/v1/delivery";
 // 								$data = array(
-// 								    'text_message' => $message,
+// 								    // 'url_name' => $url_name,
 // 								    'phone_number' => "09076114485"
 // 								);
-// 								//JSON形式に変換
-// 								$content = json_encode($data);
-								
+// 								$content = http_build_query($data);
+// 								$options = array('http' => array(
+// 								    'method' => 'POST',
+// 								    'content' => $content
+// 								));
+// 								$contents = file_get_contents($url, false, stream_context_create($options));
+//
+// // 								$data1 =array();
+// // 								$data1 = http_build_query($data1, "", "&");
+// // 								$header = array(
+// // 								"Content-Type: application/x-www-form-urlencoded",
+// // 								"Content-Length: ".strlen($data1)
+// // 								);
+
+								// $url = "https://api.smslink.jp/api/v1/delivery";
+								$url = "https://sand-api-smslink.nexlink2.jp/";
+
 								$json = '{"contacts": [{ phone_number: "09076114485" }], "text̲_message": " こんにちは"}';
 								$content = json_decode($json);
-								
+
 								$options = array('http' => array(
 								    'protocol_version' => '1.1',
 								    'method' => 'POST',
@@ -103,8 +96,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								    'content' => $content
 								));
 								$contents = file_get_contents($url, false, stream_context_create($options));
-								
->>>>>>> 628377cb0bdee497eb4222b8a5763a89c57a50cc
+
 							}
 
 						}
