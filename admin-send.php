@@ -91,7 +91,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$content = json_decode($json);
 
 								$options = array('http' => array(
-								    // 'protocol_version' => '1.1',
+								    'protocol_version' => '1.1',
 								    'method' => 'POST',
 								    'header' => implode("\r\n", $header),
 								    'content' => $content
