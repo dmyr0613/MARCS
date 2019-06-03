@@ -38,7 +38,8 @@
     $row_array['update_datetime'] = $row['update_datetime'];
 
     array_push($json_array,$row_array);
-
+    error_log($json_array);
+    
   }
 
   //半分おまじない。JSONで送りますよという合図
