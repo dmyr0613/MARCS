@@ -94,7 +94,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								    'protocol_version' => '1.1',
 								    'method' => 'POST',
 								    'header' => implode("\r\n", $header),
-								    'content' => $content
+								    // 'content' => $content
 								));
 								$contents = file_get_contents($url, false, stream_context_create($options));
 
