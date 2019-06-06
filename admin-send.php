@@ -88,7 +88,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$url = "https://sand-api-smslink.nexlink2.jp/api/v1/delivery";
 
 								// $json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは", "reserved_at": "",　"click_count": true,　"notification_emails": [　"test1@example.com（通知先１）",　"test2@example.com（通知先２）"]}';
-								$json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは", "reserved_at":"", "click_count": true, "notification_emails": [ "test1@example.com（通知先１）", "test2@example.com（通知先２）"]}';
+								// $json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは", "reserved_at":"", "click_count": true, "notification_emails": [ "test1@example.com（通知先１）", "test2@example.com（通知先２）"]}';
+								$json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは" }';
 								$content = json_decode($json);
 
 								$options = array('http' => array(
