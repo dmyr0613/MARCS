@@ -80,7 +80,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$data1 =array();
 								$data1 = http_build_query($data1, "", "&");
 								$header = array(
-								"Content-Type: application/x-www-form-urlencoded",
+								"Content-Type: application/json",
 								"Content-Length: ".strlen($data1)
 								);
 
