@@ -98,6 +98,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								));
 								$contents = file_get_contents($url, false, stream_context_create($options));
 
+								//レスポンスを表示
+								error_log($contents);
 
 							}
 
