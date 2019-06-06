@@ -76,7 +76,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 // 								));
 // 								$contents = file_get_contents($url, false, stream_context_create($options));
 //
-/*
+
 								$data1 =array();
 								$data1 = http_build_query($data1, "", "&");
 								$header = array(
@@ -92,42 +92,15 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$content = json_decode($json);
 
 								$options = array('http' => array(
-								    // 'protocol_version' => '1.1',
+								    'protocol_version' => '1.1',
 								    'method' => 'POST',
 								    'header' => implode("\r\n", $header),
-								    // 'content' => $content
+								    'content' => $content
 								));
 								$contents = file_get_contents($url, false, stream_context_create($options));
 
 								//レスポンスを表示
 								error_log("レスポンス：" . $contents);
-*/
-
-
-
-
-								// 送信データ
-								$data = array(
-								    "key1" => "value1",
-								    "key2" => "value2"
-								);
-								// URLエンコードされたクエリ文字列を生成
-								$data = http_build_query($data, "", "&");
-								// ストリームコンテキストのオプションを作成
-								$options = array(
-								        // HTTPコンテキストオプションをセット
-								        'http' => array(
-								            'method'=> 'POST',
-								            'header'=> 'Content-Type: application/x-www-form-urlencoded'
-								            // 'content' => $data
-								        )
-								);
-								// ストリームコンテキストの作成
-								$context = stream_context_create($options);
-								// POST送信
-								$contents = file_get_contents('https://sand-api-smslink.nexlink2.jp/api/v1/delivery', false, $context);
-								// reception.php のレスポンスを表示
-								echo $contents;
 
 							}
 
