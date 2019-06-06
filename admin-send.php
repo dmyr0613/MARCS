@@ -118,8 +118,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								        // HTTPコンテキストオプションをセット
 								        'http' => array(
 								            'method'=> 'POST',
-								            'header'=> 'Content-Type: application/x-www-form-urlencoded',
-								            'content' => $data
+								            'header'=> 'Content-Type: application/x-www-form-urlencoded'
+								            // 'content' => $data
 								        )
 								);
 								// ストリームコンテキストの作成
