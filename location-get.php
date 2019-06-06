@@ -38,7 +38,7 @@
     $row_array['update_datetime'] = $row['update_datetime'];
 
     array_push($json_array,$row_array);
-    error_log(print_r($json_array, true));
+    // error_log(print_r($json_array, true));
 
   }
 
