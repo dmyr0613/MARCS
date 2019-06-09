@@ -12,23 +12,19 @@
     error_log("接続に成功しました。");
   }
 
-  $sql=$pdo->prepare('select * from location order by update_datetime');
+  $sqlText  = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.beacon_name) beacon_name,';
+  $sqlText .= '       a.uuid,a.lat,a.lon,a.proximity,a.update_datetime';
+  $sqlText .= '  from (location a left join device b on a.device_name = b.device_name)';
+  $sqlText .= '       left join beacon c on a.uuid = c.uuid ';
+  $sqlText .= ' order by update_datetime';
+  // $sql=$pdo->prepare('select * from location order by update_datetime');
+  $sql=$pdo->prepare($sqlText);
   $sql->execute();
 
   $json_array = array();
 
   foreach ($sql as $row) {
     //JSON形式にする
-    // $json_array = array(
-    //     'device_name' => $row['device_name'],
-    //     'beacon_name' => $row['beacon_name'],
-    //     'uuid' => $row['uuid'],
-    //     'lat' => $row['lat'],
-    //     'lon' => $row['lon'],
-    //     'prox' => $row['prox'],
-    //     'update_datetime' => $row['update_datetime'],
-    // );
-
     $row_array['device_name'] = $row['device_name'];
     $row_array['beacon_name'] = $row['beacon_name'];
     $row_array['uuid'] = $row['uuid'];
@@ -39,7 +35,6 @@
 
     array_push($json_array,$row_array);
     // error_log(print_r($json_array, true));
-
   }
 
   //半分おまじない。JSONで送りますよという合図
