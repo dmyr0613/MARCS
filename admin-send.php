@@ -82,7 +82,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$header = array(
 								"Host: api.smslink.jp",
 								"Content-Type: application/json;charset=UTF-8",
-								"Authorization: YOUR_API_TOKEN",
+								"Authorization: dbe1aee9-93e5-4d28-b445-f166dea93658",
 								"Content-Length: ".strlen($data1)
 								);
 

@@ -63,5 +63,5 @@ insert into kanja_line values(null, '9000003', '333333333', '菊川LINE');
 insert into device values('dmyr-iPhone6s', 'SBS太田');
 
 insert into beacon values('D546DF97-4757-47EF-BE09-3E2DCBDD0C77', '医療2階', 'FeasyBeacom');
-insert into beacon values('00000000-216E-1001-B000-001C4D64988A', 'ブースA', 'SK19008');
-insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 'SK19009');
+insert into beacon values('00000000-216E-1001-B000-001C4D64988A', 'ブースA', 'SK19099');
+insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 'SK19008');
