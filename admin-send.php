@@ -121,7 +121,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 
 								header('Content-type: application/json; charset=utf-8');
-								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは" }';
+								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "text message" }';
 
 								$ch = curl_init();
 								curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
@@ -134,7 +134,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 								$response = curl_exec($ch);
 								curl_close($ch);
 
-								error_log($response);
+								// error_log($response);
 								error_log(print_r($response, true));
 								// echo $response;
 
