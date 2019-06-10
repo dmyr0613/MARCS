@@ -82,57 +82,57 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 // -H "Content-Type:application/json"
 
 
-								$data1 =array();
-								$data1 = http_build_query($data1, "", "&");
-
-								$header = array(
-								"Host: api.smslink.jp",
-								"Accept: application/json",
-								"Content-Type: application/json;charset=UTF-8",
-								"Authorization: Bearer dbe1aee9-93e5-4d28-b445-f166dea93658",
-								"Content-Length: ".strlen($data1)
-								);
-								error_log($header);
-								
-								// $url = "https://api.smslink.jp/api/v1/delivery";
-								$url = "https://sand-api-smslink.nexlink2.jp/api/v1/delivery";
-
-								// $json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは", "reserved_at": "",　"click_count": true,　"notification_emails": [　"test1@example.com（通知先１）",　"test2@example.com（通知先２）"]}';
-								// $json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは", "reserved_at":"", "click_count": true, "notification_emails": [ "test1@example.com（通知先１）", "test2@example.com（通知先２）"]}';
-								$json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは" }';
-								$content = json_decode($json);
-
-								$options = array('http' => array(
-								    'protocol_version' => '1.1',
-								    'method' => 'POST',
-								    'header' => implode("\r\n", $header),
-								    'content' => $content
-								));
-								$contents = file_get_contents($url, false, stream_context_create($options));
-
-								//レスポンスを表示
-								error_log("レスポンス：" . $contents);
-
-
-								// $url_api      = 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery';
-								// $access_token = 'dbe1aee9-93e5-4d28-b445-f166dea93658'
-								// $header       = "Authorization: Bearer ${access_token}\r\n"; //CRLF
+								// $data1 =array();
+								// $data1 = http_build_query($data1, "", "&");
 								//
+								// $header = array(
+								// "Host: api.smslink.jp",
+								// "Accept: application/json",
+								// "Content-Type: application/json;charset=UTF-8",
+								// "Authorization: Bearer dbe1aee9-93e5-4d28-b445-f166dea93658",
+								// "Content-Length: ".strlen($data1)
+								// );
+								// error_log($header);
+								//
+								// // $url = "https://api.smslink.jp/api/v1/delivery";
+								// $url = "https://sand-api-smslink.nexlink2.jp/api/v1/delivery";
+								//
+								// // $json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは", "reserved_at": "",　"click_count": true,　"notification_emails": [　"test1@example.com（通知先１）",　"test2@example.com（通知先２）"]}';
+								// // $json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは", "reserved_at":"", "click_count": true, "notification_emails": [ "test1@example.com（通知先１）", "test2@example.com（通知先２）"]}';
 								// $json = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": " こんにちは" }';
-								// $json_content = json_decode($json);
+								// $content = json_decode($json);
 								//
-								// $context = [
-								//     'http' => [
-								//         'method'        => 'POST',
-								//         'ignore_errors' => true,
-								//         'header'        => $header,
-								// 				'content' => $json_content
-								//     ],
-								// ];
+								// $options = array('http' => array(
+								//     'protocol_version' => '1.1',
+								//     'method' => 'POST',
+								//     'header' => implode("\r\n", $header),
+								//     'content' => $content
+								// ));
+								// $contents = file_get_contents($url, false, stream_context_create($options));
 								//
-								// // リクエスト開始
-								// $http_response_header = null;
-								// $result = file_get_contents($url_api, false, stream_context_create($context));
+								// //レスポンスを表示
+								// error_log("レスポンス：" . $contents);
+
+
+
+								header('Content-type: application/json; charset=utf-8');
+
+								$options = array(
+								    'thought' => 'PHP Test',
+								    'private' => 1
+								);
+
+								$ch = curl_init();
+								curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
+								curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
+								curl_setopt($ch, CURLOPT_POST, 1);
+								curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($options));
+								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+								$response = curl_exec($ch);
+								curl_close($ch);
+
+								echo $response;
 
 
 							}
