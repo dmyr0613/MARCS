@@ -111,8 +111,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 								preg_match('/HTTP\/1\.[0|1|x] ([0-9]{3})/', $http_response_header[0], $matches);
 								$status_code = $matches[1];
-								error_log($status_code)
-								
+								error_log($status_code);
+
 								//レスポンスを表示
 								error_log("レスポンス：" . $contents);
 
