@@ -127,8 +127,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 								$ch = curl_init();
 								curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
-								// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
-								curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
+								curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
+								// curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
 								curl_setopt($ch, CURLOPT_POST, 1);
 								curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($options));
 								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
