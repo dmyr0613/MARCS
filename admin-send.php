@@ -77,11 +77,6 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 // 								$contents = file_get_contents($url, false, stream_context_create($options));
 //
 
-// -H "Accept: application/json"
-// -H "token:YOUR_API_TOKEN"
-// -H "Content-Type:application/json"
-
-
 								// $data1 =array();
 								// $data1 = http_build_query($data1, "", "&");
 								//
@@ -120,28 +115,30 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 
 
-								header('Content-type: application/json; charset=utf-8');
+								// header('Content-type: application/json; charset=utf-8');
 								// $options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "text message" }';
-								$options = '{"contacts":[{"phone_number":"09076114485"}],
-"text_message":" こんにちはここhttps://api.smslink.jpをクリックしてください{{配信停止URL}}", "reserved_at":"","click_count":true,"notification_emails":["test1@example.com(通知先1)","test2@example.com(通知先2)"]}';
+								//
+								// $ch = curl_init();
+								// curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
+								// // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
+								// curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
+								// curl_setopt($ch, CURLOPT_POST, 1);
+								// curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($options));
+								// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+								//
+								// $response = curl_exec($ch);
+								// curl_close($ch);
+								// error_log(print_r($response, true));
 
 								$ch = curl_init();
-								curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
+								curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery_results');
 								// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
 								curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
-								curl_setopt($ch, CURLOPT_POST, 1);
-								curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($options));
 								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 								$response = curl_exec($ch);
-								$header = curl_getinfo( $ch );
 								curl_close($ch);
-
-								// error_log($response);
 								error_log(print_r($response, true));
-								error_log(print_r($header, true));
-
-								// echo $response;
 
 							}
 
