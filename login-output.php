@@ -31,7 +31,7 @@
 							'name'=>$row['name'],
 							'password'=>$row['password'],
 							'line_id'=>$row['line_id'],
-							'line_name'=>$row['line_name']];
+							'phone_no'=>$row['phone_no']];
 					}
 					if (isset($_SESSION['kanja'])) {
 						echo '<p>ようこそ、', $_SESSION['kanja']['name'], ' さん。</p>';
