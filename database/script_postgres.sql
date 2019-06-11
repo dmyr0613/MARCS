@@ -8,7 +8,7 @@ create table kanja (
 	name varchar(100) not null,
 	password varchar(100) not null,
 	line_id varchar(100) not null,
-  line_name varchar(100),
+  phone_no varchar(100),
   facility_code varchar(50),
   yoyaku_datetime varchar(10)
 );
@@ -17,7 +17,7 @@ create table kanja_line (
   no SERIAL auto_increment primary key,
   kanja_id int not null,
 	line_id varchar(100) not null not null,
-  line_name varchar(100) not null
+  phone_no varchar(100) not null
 );
 
 create table facility (
@@ -49,9 +49,19 @@ create table beacon (
 );
 
 -- insert into kanja values('9000001', '駿河　葵', '9000001', 'U657e8de8b409504ac329af7ebcefc723', '駿河LINE', '', '');
-insert into kanja values('9000001', '駿河　葵', '9000001', '111111111', '駿河LINE', '', '');
-insert into kanja values('9000002', '静岡　菜々子', '9000002', '222222222', '菜々子LINE', '', '');
-insert into kanja values('9000003', '菊川　良子', '9000003', '333333333', '菊川LINE', '', '');
+-- insert into kanja values('9000001', '駿河　葵', '9000001', '111111111', '駿河LINE', '', '');
+-- insert into kanja values('9000002', '静岡　菜々子', '9000002', '222222222', '菜々子LINE', '', '');
+-- insert into kanja values('9000003', '菊川　良子', '9000003', '333333333', '菊川LINE', '', '');
+insert into kanja values('9000002','静岡　菜々子','9000002','222222222','09012345678','','');
+insert into kanja values('9000003','菊川　良子','9000003','333333333','09012345678','','');
+insert into kanja values('222','Matsu','222','Uebf74ca3eba8f139972dda65ed5873ae','09012345678','1234567890','09:00');
+insert into kanja values('777','鈴木','aaa','U96769b144c492370726277a567ce5108','09012345678','1234567890','09:00');
+insert into kanja values('9000001','駿河　葵','9000001','111111111','09012345678','1234567890','09:00');
+insert into kanja values('333','原田','sbs1404','U61d18c70ef94c6d4c3cf826dc4f72813','09012345678','1234567890','09:00');
+insert into kanja values('12345','Shimizu','qazx','U3b7289f3698d67aed6869267ee07f679','09012345678','1234567890','09:00');
+insert into kanja values('111','太田','111','U657e8de8b409504ac329af7ebcefc723','09012345678','1234567890','10:30');
+insert into kanja values('111301','寺内啓海','11130','Ufdaf811d7c44b9a7738180f01faeb2f6','09012345678','1234567890','10:30');
+insert into kanja values('123456','むらまつ','2233','U28013302cde74a3c683ee51166782f50','09012345678','1234567890','10:30');
 
 insert into kanja_line values(null, '9000001', '111111111', '駿河LINE');
 insert into kanja_line values(null, '9000002', '222222222', '菜々子LINE');

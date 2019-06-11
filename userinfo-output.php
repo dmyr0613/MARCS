@@ -34,12 +34,12 @@
 						if (isset($_SESSION['kanja'])) {
 
 							// ログイン中であれば、KANJAテーブルをUPDATE。
-							$sql=$pdo->prepare('update kanja set name=?, password=?, line_id=?, line_name=? where kanja_id=?');
+							$sql=$pdo->prepare('update kanja set name=?, password=?, line_id=?, phone_no=? where kanja_id=?');
 							$sql->execute([
 								$_REQUEST['name'],
 								$_REQUEST['password'],
 								$_REQUEST['line_id'],
-								$_REQUEST['line_name'],
+								$_REQUEST['phone_no'],
 								$_SESSION['kanja']['kanja_id']]);
 
 							$_SESSION['kanja']=[
@@ -47,7 +47,7 @@
 								'name'=>$_REQUEST['name'],
 								'password'=>$_REQUEST['password'],
 								'line_id'=>$_REQUEST['line_id'],
-								'line_name'=>$_REQUEST['line_name']];
+								'phone_no'=>$_REQUEST['phone_no']];
 
 							echo '<p>ユーザ情報を更新しました。</p>';
 							echo '<ul class="actions">';
@@ -63,7 +63,7 @@
 								$_REQUEST['name'],
 								$_REQUEST['password'],
 								$_REQUEST['line_id'],
-								$_REQUEST['line_name']]);
+								$_REQUEST['phone_no']]);
 
 							//セッション情報を更新
 							$_SESSION['kanja']=[
@@ -71,7 +71,7 @@
 								'name'=>$_REQUEST['name'],
 								'password'=>$_REQUEST['password'],
 								'line_id'=>$_REQUEST['line_id'],
-								'line_name'=>$_REQUEST['line_name']];
+								'phone_no'=>$_REQUEST['phone_no']];
 
 								echo '<p>ユーザ情報を更新しました。<br>';
 								echo '続けて診察予約をされる場合は、診察予約を押して下さい。</p>';

@@ -11,13 +11,13 @@
 				<!-- reserveMain -->
 				<section id="userinfoMain">
 					<?php
-					$kanja_id=$name=$password=$line_id=$line_name='';
+					$kanja_id=$name=$password=$line_id=$phone_no='';
 					if (isset($_SESSION['kanja'])) {
 						$kanja_id=$_SESSION['kanja']['kanja_id'];
 						$name=$_SESSION['kanja']['name'];
 						$password=$_SESSION['kanja']['password'];
 						$line_id=$_SESSION['kanja']['line_id'];
-						$line_name=$_SESSION['kanja']['line_name'];
+						$phone_no=$_SESSION['kanja']['phone_no'];
 					}
 					echo '<form action="userinfo-output.php" method="post">';
 					echo '<table>';
@@ -45,8 +45,8 @@
 					}
 
 					echo '</td></tr>';
-					echo '<tr><td>メールアドレス</td><td>';
-					echo '<input type="text" name="line_name" value="', $line_name, '">';
+					echo '<tr><td>携帯番番号(SMS用)</td><td>';
+					echo '<input type="text" name="phone_no" value="', $phone_no, '">';
 					echo '</td></tr>';
 					echo '</table>';
 					echo '<input type="submit" class="button big primary" value="ユーザ情報登録">';
