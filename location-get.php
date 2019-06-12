@@ -12,15 +12,9 @@
     error_log("接続に成功しました。");
   }
 
-  // $sqlText  = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.beacon_name) beacon_name,';
-  // $sqlText .= '       a.uuid,a.lat,a.lon,a.proximity,a.update_datetime';
-  // $sqlText .= '  from (location a left join device b on a.device_name = b.device_name)';
-  // $sqlText .= '       left join beacon c on a.uuid = c.uuid ';
-  // $sqlText .= ' order by update_datetime';
-
-  //デバイス毎に最新の情報を返す
-  $sqlText  = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.beacon_name) beacon_name,';
-  $sqlText .= '       a.uuid,a.lat,a.lon,a.proximity,a.update_datetime';
+  //デバイス毎に最新の情報を取得
+  $sqlText  = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.uuid) beacon_name,';
+  $sqlText .= '       a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime';
   $sqlText .= '  from (';
   $sqlText .= '       (';
   $sqlText .= '       select aa.*';
@@ -34,7 +28,6 @@
   $sqlText .= '       left join beacon c on a.uuid = c.uuid ';
   $sqlText .= ' order by update_datetime';
 
-  // $sql=$pdo->prepare('select * from location order by update_datetime');
   $sql=$pdo->prepare($sqlText);
   $sql->execute();
 
@@ -48,6 +41,7 @@
     $row_array['lat'] = $row['lat'];
     $row_array['lon'] = $row['lon'];
     $row_array['prox'] = $row['proximity'];
+    $row_array['status'] = $row['status'];
     $row_array['update_datetime'] = $row['update_datetime'];
 
     array_push($json_array,$row_array);

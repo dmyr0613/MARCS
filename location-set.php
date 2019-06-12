@@ -1,7 +1,6 @@
 <?php
 
 try{
-// https://sbs-marcs.herokuapp.com/set-location.php?uuid=1&lat=10&lon=20
 
 	if (!empty($_GET)) {
 
@@ -20,7 +19,6 @@ try{
 		}else{
 			error_log("接続に成功しました。");
 		}
-		// https://sbs-marcs.herokuapp.com/set-location.php?device_name=abc&beacon_name=aaa&uuid=1&lat=10&lon=20&prox=near
 
 		// $device_name = base64_encode($_GET['device_name']);
 		$device_name = $_GET['device_name'];
@@ -29,11 +27,11 @@ try{
 		$sql=$pdo->prepare('insert into location values(?, ?, ?, ?, ?, ?, ?)');
 		$sql->execute([
 			$device_name,
-			$_GET['beacon_name'],
 			$_GET['uuid'],
 			$_GET['lat'],
 			$_GET['lon'],
 			$_GET['prox'],
+			$_GET['status'],
 			$datetime]);
 
 		//DB接続情報をクリア

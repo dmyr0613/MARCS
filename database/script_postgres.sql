@@ -29,11 +29,11 @@ create table facility (
 
 create table location (
   device_name varchar(50) not null,
-  beacon_name varchar(100),
 	uuid varchar(100),
 	lat double precision,
   lon double precision,
   proximity varchar(10),
+  status varchar(10),
   update_datetime timestamp
 );
 
@@ -75,3 +75,20 @@ insert into device values('dmyr-iPhone6s', 'SBS太田');
 insert into beacon values('D546DF97-4757-47EF-BE09-3E2DCBDD0C77', '医療2階', 'FeasyBeacom');
 insert into beacon values('00000000-216E-1001-B000-001C4D64988A', 'ブースA', 'SK19099');
 insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 'SK19008');
+
+
+-- locationからデバイス毎の最新情報を取得する
+  select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.uuid) beacon_name,
+         a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime
+    from (
+         (
+         select aa.*
+           from location aa inner join
+                (select device_name,max(update_datetime) update_datetime from location group by device_name) bb
+             on aa.device_name     = bb.device_name
+            and aa.update_datetime = bb.update_datetime
+         ) a
+         left join device b on a.device_name = b.device_name
+         )
+         left join beacon c on a.uuid = c.uuid
+   order by update_datetime
