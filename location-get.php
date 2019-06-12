@@ -12,11 +12,28 @@
     error_log("接続に成功しました。");
   }
 
+  // $sqlText  = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.beacon_name) beacon_name,';
+  // $sqlText .= '       a.uuid,a.lat,a.lon,a.proximity,a.update_datetime';
+  // $sqlText .= '  from (location a left join device b on a.device_name = b.device_name)';
+  // $sqlText .= '       left join beacon c on a.uuid = c.uuid ';
+  // $sqlText .= ' order by update_datetime';
+
+  //デバイス毎に最新の情報を返す
   $sqlText  = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.beacon_name) beacon_name,';
   $sqlText .= '       a.uuid,a.lat,a.lon,a.proximity,a.update_datetime';
-  $sqlText .= '  from (location a left join device b on a.device_name = b.device_name)';
+  $sqlText .= '  from (';
+  $sqlText .= '       (';
+  $sqlText .= '       select aa.*';
+  $sqlText .= '         from location aa inner join';
+  $sqlText .= '              (select device_name,max(update_datetime) update_datetime from location group by device_name) bb';
+  $sqlText .= '           on aa.device_name     = bb.device_name';
+  $sqlText .= '          and aa.update_datetime = bb.update_datetime';
+  $sqlText .= '       ) a ';
+  $sqlText .= '       left join device b on a.device_name = b.device_name';
+  $sqlText .= '       )';
   $sqlText .= '       left join beacon c on a.uuid = c.uuid ';
   $sqlText .= ' order by update_datetime';
+
   // $sql=$pdo->prepare('select * from location order by update_datetime');
   $sql=$pdo->prepare($sqlText);
   $sql->execute();
