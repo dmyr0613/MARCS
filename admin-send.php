@@ -78,7 +78,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 
 
-								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "text message" }';
+								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "' . $message . '" }';
 
 								$ch = curl_init();
 								// sandbox環境
