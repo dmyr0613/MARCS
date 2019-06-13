@@ -78,11 +78,16 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 
 
-								$options = '{"contacts": [{ "phone_number": "09011111101" }], "text_message": "text message" }';
+								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "text message" }';
 
 								$ch = curl_init();
-								curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
-								curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
+								// sandbox環境
+								// curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
+								// curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
+
+								//本番環境
+								curl_setopt($ch, CURLOPT_URL, 'https://api.smslink.jp/api/v1/delivery');
+								curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: 4b18f132-7e34-4d15-8837-3df8cde772d6', 'Content-Type: application/json'));
 								curl_setopt($ch, CURLOPT_POST, 1);
 								// curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($options));
 								curl_setopt($ch, CURLOPT_POSTFIELDS, $options);
