@@ -94,12 +94,20 @@ insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 
    order by update_datetime desc
 
 -- locationからデバイス名指定で全データを取得する
-select COALESCE(b.name,a.device_name) disp_name,a.device_name,COALESCE(c.name,a.uuid) beacon_name,
+-- select COALESCE(b.name,a.device_name) disp_name,a.device_name,COALESCE(c.name,a.uuid) beacon_name,
+--        a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime
+--   from location a
+--        inner join device b
+--                on a.device_name = b.device_name
+--               and b.device_name = 'dmyr-iPhone6s'
+--         left join beacon c
+--                on a.uuid        = c.uuid
+--  order by update_datetime desc
+
+ -- locationからデバイス名指定で全データを取得する
+ select COALESCE(c.name,a.uuid) beacon_name,
        a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime
-  from location a
-       inner join device b
-               on a.device_name = b.device_name
-              and b.name        = 'SBS太田'
-        left join beacon c
-               on a.uuid        = c.uuid
+  from location a inner join beacon c
+    on a.uuid        = c.uuid
+   and a.device_name = 'abc'
  order by update_datetime desc
