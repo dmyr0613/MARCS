@@ -44,6 +44,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 					$message = "もうすぐ診察の時間です。";
 					$message = $message . "\r\n" . "外出されている場合は、来院して頂きますようお願いします。";
 
+					$message2 = "もうすぐ診察の時間です。 外出されている場合は、来院して頂きますようお願いします。";
+
           if (!empty($_REQUEST)) {
             //引数でLINE_IDを取得
 						$obj = $_REQUEST;
@@ -78,7 +80,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 
 
 
-								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "' . $message . '" }';
+								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "' . $message2 . '" }';
 
 								$ch = curl_init();
 								// sandbox環境
