@@ -52,6 +52,7 @@
 									echo '<td> </td>';
 								}
 								echo '</tr>';
+								error_log($row['phone_no']);
 							}
 							echo '</table>';
 							echo '<input type="submit" class="button primary small" value="Send">';
