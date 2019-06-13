@@ -42,10 +42,15 @@
 								echo '<input type="checkbox" id="line_id' . $row['line_id'] . '" name="line_id_' . $row['line_id'] . '">';
 								echo '<label for="line_id' . $row['line_id'] . '"> </label>';
 								echo '</td>';
-								echo '<td>';
-								echo '<input type="checkbox" id="phone_no' . $row['phone_no'] . '" name="phone_no_' . $row['phone_no'] . '">';
-								echo '<label for="phone_no' . $row['phone_no'] . '"> </label>';
-								echo '</td>';
+								if (!empty($row['phone_no'])) {
+									//電話番号が登録されている場合にチェックボックスを表示する
+									echo '<td>';
+									echo '<input type="checkbox" id="phone_no' . $row['phone_no'] . '" name="phone_no_' . $row['phone_no'] . '">';
+									echo '<label for="phone_no' . $row['phone_no'] . '"> </label>';
+									echo '</td>';
+								} else {
+									echo '<td> </td>';
+								}
 								echo '</tr>';
 							}
 							echo '</table>';

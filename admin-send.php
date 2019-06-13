@@ -47,7 +47,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 		            }
 							} elseif (substr_count($key, 'phone_no') == 1) {
 								//文字列にphone_noが含まれる場合
-								$key = substr($key, 10);	//PhoneNoアドレスを抜き取ります。
+								$key = substr($key, 9);	//PhoneNoアドレスを抜き取ります。
 								error_log($key);
 
 								// $options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "' . $message2 . '" }';
