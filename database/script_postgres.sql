@@ -78,7 +78,7 @@ insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 
 
 
 -- locationからデバイス毎の最新情報を取得する
-  select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.uuid) beacon_name,
+  select COALESCE(b.name,a.device_name) disp_name,a.device_name,COALESCE(c.name,a.uuid) beacon_name,
          a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime
     from (
          (
@@ -94,7 +94,7 @@ insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 
    order by update_datetime desc
 
 -- locationからデバイス名指定で全データを取得する
-select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.uuid) beacon_name,
+select COALESCE(b.name,a.device_name) disp_name,a.device_name,COALESCE(c.name,a.uuid) beacon_name,
        a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime
   from location a
        inner join device b

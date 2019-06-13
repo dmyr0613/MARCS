@@ -13,7 +13,7 @@
   }
 
   //デバイス毎に最新の情報を取得
-  $sqlText  = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.uuid) beacon_name,';
+  $sqlText  = 'select COALESCE(b.name,a.device_name) disp_name,a.device_name,COALESCE(c.name,a.uuid) beacon_name,';
   $sqlText .= '       a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime';
   $sqlText .= '  from (';
   $sqlText .= '       (';
@@ -35,6 +35,7 @@
 
   foreach ($sql as $row) {
     //JSON形式にする
+    $row_array['disp_name'] = $row['disp_name'];
     $row_array['device_name'] = $row['device_name'];
     $row_array['beacon_name'] = $row['beacon_name'];
     $row_array['uuid'] = $row['uuid'];
