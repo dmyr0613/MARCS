@@ -19,11 +19,11 @@
   $sqlText   = 'select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.uuid) beacon_name,';
   $sqlText  .= '       a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime';
   $sqlText  .= '  from location a';
-  $sqlText  .= '       left join device b';
-  $sqlText  .= '              on a.device_name = b.device_name';
-  $sqlText  .= "             and b.device_name = '" . $device_name . "'";
-  $sqlText  .= '       left join beacon c';
-  $sqlText  .= '              on a.uuid        = c.uuid';
+  $sqlText  .= '       inner join device b';
+  $sqlText  .= '               on a.device_name = b.device_name';
+  $sqlText  .= "              and b.name        = '" . $device_name . "'";
+  $sqlText  .= '        left join beacon c';
+  $sqlText  .= '               on a.uuid        = c.uuid';
   $sqlText  .= ' order by update_datetime desc';
   error_log(print_r($sqlText, true));
 

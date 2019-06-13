@@ -97,9 +97,9 @@ insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 
 select COALESCE(b.name,a.device_name) device_name,COALESCE(c.name,a.uuid) beacon_name,
        a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime
   from location a
-       left join device b
-              on a.device_name = b.device_name
-             and b.device_name = 'SBS太田'
-       left join beacon c
-              on a.uuid        = c.uuid
+       inner join device b
+               on a.device_name = b.device_name
+              and b.name        = 'SBS太田'
+        left join beacon c
+               on a.uuid        = c.uuid
  order by update_datetime desc
