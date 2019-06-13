@@ -25,22 +25,6 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 				<section id="messageSend">
 					<?php
 
-					// $obj = $_REQUEST;
-					// echo var_dump($_REQUEST);
-					// echo '<br>';
-					// foreach ($obj as $key => $val){
-					// 	// echo $key;
-					// 	// echo '<br>';
-					// 	if (substr_count($key, 'line_id') == 1) {
-					// 		echo 'LINE:' . substr($key, 8);
-					// 		echo '<br>';
-					// 	} elseif (substr_count($key, 'mail_addr') == 1) {
-					// 		//文字列にmail_addrが含まれる場合
-					// 		echo 'MAIL:' . substr($key, 10);	//MAILアドレスを抜き取ります。
-					// 		echo '<br>';
-					// 	}
-					// }
-
 					$message = "もうすぐ診察の時間です。";
 					$message = $message . "\r\n" . "外出されている場合は、来院して頂きますようお願いします。";
 
@@ -61,32 +45,18 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 		            if (!$response->isSucceeded()) {
 		              error_log('Failed!'. $response->getHTTPStatus . ' ' . $response->getRawBody());
 		            }
-							} elseif (substr_count($key, 'mail_addr') == 1) {
-								//文字列にmail_addrが含まれる場合
-								$key = substr($key, 10);	//MAILアドレスを抜き取ります。
+							} elseif (substr_count($key, 'phone_no') == 1) {
+								//文字列にphone_noが含まれる場合
+								$key = substr($key, 10);	//PhoneNoアドレスを抜き取ります。
 								error_log($key);
 
-// 								$url = "https://api.smslink.jp/api/v1/delivery";
-// 								$data = array(
-// 								    // 'url_name' => $url_name,
-// 								    'phone_number' => "09076114485"
-// 								);
-// 								$content = http_build_query($data);
-// 								$options = array('http' => array(
-// 								    'method' => 'POST',
-// 								    'content' => $content
-// 								));
-// 								$contents = file_get_contents($url, false, stream_context_create($options));
-
-
-
-								$options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "' . $message2 . '" }';
+								// $options = '{"contacts": [{ "phone_number": "09076114485" }], "text_message": "' . $message2 . '" }';
+								$options = '{"contacts": [{ "phone_number": "' . $key . '" }], "text_message": "' . $message2 . '" }';
 
 								$ch = curl_init();
 								// sandbox環境
 								// curl_setopt($ch, CURLOPT_URL, 'https://sand-api-smslink.nexlink2.jp/api/v1/delivery');
 								// curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: dbe1aee9-93e5-4d28-b445-f166dea93658', 'Content-Type: application/json'));
-
 								//本番環境
 								curl_setopt($ch, CURLOPT_URL, 'https://api.smslink.jp/api/v1/delivery');
 								curl_setopt($ch, CURLOPT_HTTPHEADER, array('token: 4b18f132-7e34-4d15-8837-3df8cde772d6', 'Content-Type: application/json'));
