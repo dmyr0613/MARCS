@@ -27,6 +27,7 @@
   $sqlText .= '       )';
   $sqlText .= '       left join beacon c on a.uuid = c.uuid ';
   $sqlText .= ' order by update_datetime desc';
+  error_log(print_r($sqlText, true));
 
   $sql=$pdo->prepare($sqlText);
   $sql->execute();
