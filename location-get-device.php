@@ -21,7 +21,7 @@
   $sqlText  .= '  from location a';
   $sqlText  .= '       inner join device b';
   $sqlText  .= '               on a.device_name = b.device_name';
-  $sqlText  .= "              and b.name        = '" . $device_name . "'";
+  $sqlText  .= "              and b.device_name = '" . $device_name . "'";
   $sqlText  .= '        left join beacon c';
   $sqlText  .= '               on a.uuid        = c.uuid';
   $sqlText  .= ' order by update_datetime desc';
