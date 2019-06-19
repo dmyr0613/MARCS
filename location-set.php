@@ -23,12 +23,15 @@ try{
 		// $device_name = base64_encode($_GET['device_name']);
 		$device_name = $_GET['device_name'];
 
+		//10秒前の時間をセット
+		$datetime2 = date("Y/m/d His",strtotime("-10 minute"));
+		
 		//10秒前に同じステータスで書かれていたら、抜ける
 		$sql=$pdo->prepare('select * location where device_name=? and proximity=? and update_datetime=?');
 		$sql->execute([
 			$device_name,
 			$_GET['prox'],
-			date("Y/m/d His",strtotime("-10 minute")));
+			$datetime2);
 		$count = $sql->rowCount();
 		error_log($count);
 
