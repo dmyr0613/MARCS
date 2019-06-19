@@ -23,17 +23,28 @@ try{
 		// $device_name = base64_encode($_GET['device_name']);
 		$device_name = $_GET['device_name'];
 
-		//locationテーブルへINSERT
-		$sql=$pdo->prepare('insert into location values(?, ?, ?, ?, ?, ?, ?)');
+		//10秒前に同じステータスで書かれていたら、抜ける
+		$sql=$pdo->prepare('select * location where device_name=? and proximity=? and update_datetime=?');
 		$sql->execute([
 			$device_name,
-			$_GET['uuid'],
-			$_GET['lat'],
-			$_GET['lon'],
 			$_GET['prox'],
-			$_GET['status'],
-			$datetime]);
+			date("Y/m/d His",strtotime("-10 minute")));
+		$count = $sql->rowCount();
+		error_log($count);
 
+		if ($count == 0) {
+			//locationテーブルへINSERT
+			$sql=$pdo->prepare('insert into location values(?, ?, ?, ?, ?, ?, ?)');
+			$sql->execute([
+				$device_name,
+				$_GET['uuid'],
+				$_GET['lat'],
+				$_GET['lon'],
+				$_GET['prox'],
+				$_GET['status'],
+				$datetime]);
+			error_log("locationデータ登録");
+		}
 		//DB接続情報をクリア
 		$pdo = null;
 	}
