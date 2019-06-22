@@ -25,9 +25,10 @@ try{
 
 		//10秒前の時間をセット
 		$datetime2 = date("Y/m/d His",strtotime("-10 minute"));
+		error_log($datetime2);
 
 		//10秒前に同じステータスで書かれていたら、抜ける
-		$sql=$pdo->prepare('select * location where device_name=? and proximity=? and update_datetime=?');
+		$sql=$pdo->prepare('select * location where device_name=? and proximity=? and update_datetime>=?');
 		$sql->execute([
 			$device_name,
 			$_GET['prox'],
