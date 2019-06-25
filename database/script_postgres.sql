@@ -73,8 +73,12 @@ insert into kanja_line values(null, '9000003', '333333333', '菊川LINE');
 insert into device values('dmyr-iPhone6s', 'SBS太田');
 
 insert into beacon values('D546DF97-4757-47EF-BE09-3E2DCBDD0C77', '医療2階', 'FeasyBeacom');
-insert into beacon values('00000000-216E-1001-B000-001C4D64988A', 'ブースA', 'SK19099');
 insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 'SK19008');
+insert into beacon values('00000000-216E-1001-B000-001C4D64988A', 'ブースA', 'SK19009');
+insert into beacon values('00000000-67FB-1001-B000-001C4DAEA337', 'ブースC', 'SK19010');
+insert into beacon values('00000000-5C83-1001-B000-001C4D265200', 'ブースD', 'SK19011');
+insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', 'ブースE', 'SK19012');
+
 
 
 -- locationからデバイス毎の最新情報を取得する
@@ -109,5 +113,17 @@ insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 
        a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime
   from location a inner join beacon c
     on a.uuid        = c.uuid
-   and a.device_name = 'abc'
+   and a.device_name = 'dmyr-iPhone6s'
  order by update_datetime desc
+
+ -- locationからデバイス名指定で全データを取得する2
+  select c.comment,a.status,a.update_datetime,a.proximity,
+       a.uuid,a.lat,a.lon
+  from location a left join beacon c
+    on a.uuid        = c.uuid
+   and a.device_name = 'dmyr-iPhone6s'
+ order by update_datetime desc
+
+--削除
+ delete from location
+  where device_name = 'dmyr-iPhone6s'
