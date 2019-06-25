@@ -29,7 +29,7 @@
   //locationからデバイス名指定で全データを取得する
   $sqlText   = 'select COALESCE(c.name,a.uuid) beacon_name,';
   $sqlText  .= '      a.uuid,a.lat,a.lon,a.proximity,a.status,a.update_datetime';
-  $sqlText  .= ' from location a left join beacon c';
+  $sqlText  .= ' from location a inner join beacon c';
   $sqlText  .= '   on a.uuid        = c.uuid';
   $sqlText  .= "  and a.device_name = '" . $device_name . "'";
   $sqlText  .= 'order by update_datetime desc';
