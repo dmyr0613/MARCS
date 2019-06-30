@@ -16,7 +16,7 @@
 						$sql=$pdo->prepare('select * from beacon order by name');
 						$sql->execute();
 
-						echo '<form action="beafyl-beacon-send.php" method="post">';				//送信用のpost
+						echo '<form action="beafyl-beacon.php" method="post">';				//送信用のpost
 						echo '<table>';
 						echo '<th>UUID</th><th>名前</th><th>コメント</th>';
 						foreach ($sql as $row) {

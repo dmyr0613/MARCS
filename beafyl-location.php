@@ -31,21 +31,25 @@
 					  $sql=$pdo->prepare($sqlText);
 						$sql->execute();
 
-						echo '<form action="beafyl-location-detail.php" method="post">';				//送信用のpost
+						// echo '<form action="beafyl-location-detail.php" method="post">';				//送信用のpost
 						echo '<table>';
 						echo '<th>デバイス</th><th>ビーコン</th><th>ステータス</th><th>日時</th><th>詳細</th>';
 						foreach ($sql as $row) {
+							echo '<form action="beafyl-location-detail.php" method="post">';
 							echo '<tr>';
 							echo '<td>', $row['disp_name'], '</td>';
 							echo '<td>', $row['beacon_name'], '</td>';
 							echo '<td>', $row['status'], '</td>';
 							echo '<td>', $row['update_datetime'], '</td>';
 							echo '<td>';
-							echo '<input type="Detail" class="button primary small" value="Register">';
+							echo '<input type="hidden" name="device_name" value="' . $row['device_name'] . '">';
+							echo '<input type="submit" class="button primary small" value="Detail">';
 							echo '</td>';
+							echo '</tr>';
+							echo '</form>';
 						}
 						echo '</table>';
-						echo '</form>';
+						// echo '</form>';
 
 					?>
 				</section>
