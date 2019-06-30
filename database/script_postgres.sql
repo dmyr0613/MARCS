@@ -119,7 +119,7 @@ insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', 'ブースE', 
  -- locationからデバイス名指定で全データを取得する2
   select c.comment,a.status,a.update_datetime,a.proximity,
        a.uuid,a.lat,a.lon
-  from location a left join beacon c
+  from location a inner join beacon c
     on a.uuid        = c.uuid
    and a.device_name = 'dmyr-iPhone6s'
  order by update_datetime desc

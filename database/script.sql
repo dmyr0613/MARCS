@@ -27,6 +27,28 @@ create table facility (
 	password varchar(100) not null
 );
 
+--BeaFyl
+create table location (
+  device_name varchar(50) not null,
+	uuid varchar(100),
+	lat double precision,
+  lon double precision,
+  proximity varchar(10),
+  status varchar(10),
+  update_datetime timestamp
+);
+
+create table device (
+  device_name varchar(50) not null,
+  name varchar(100)
+);
+
+create table beacon (
+  uuid varchar(100) not null,
+  name varchar(100),
+  comment varchar(100)
+);
+
 insert into kanja values( '9000001', '駿河　葵', '9000001', '111111111', '駿河LINE', null, null);
 insert into kanja values( '9000002', '静岡　菜々子', '9000002', '222222222', '菜々子LINE', null, null);
 insert into kanja values( '9000003', '菊川　良子', '9000003', '333333333', '菊川LINE', null, null);
@@ -37,3 +59,13 @@ insert into kanja_line values(null, '9000003', '333333333', '菊川LINE');
 
 insert into facility values(null, '1234567890', 'SBSクリニック', '1234567890');
 insert into facility values(null, '9876543210', 'MARCS診療所', '9876543210');
+
+--BeaFyl
+insert into device values('dmyr-iPhone6s', 'SBS太田');
+
+insert into beacon values('D546DF97-4757-47EF-BE09-3E2DCBDD0C77', '医療2階', 'FeasyBeacom');
+insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 'SK19008');
+insert into beacon values('00000000-216E-1001-B000-001C4D64988A', 'ブースA', 'SK19009');
+insert into beacon values('00000000-67FB-1001-B000-001C4DAEA337', 'ブースC', 'SK19010');
+insert into beacon values('00000000-5C83-1001-B000-001C4D265200', 'ブースD', 'SK19011');
+insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', 'ブースE', 'SK19012');
