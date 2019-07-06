@@ -52,7 +52,7 @@ try{
 	  $sql=$pdo->prepare($sqlText);
 	  $sql->execute([$_GET['device_name'],$_GET['device_name']]);
 		$count = $sql->rowCount();
-		
+
 		if ($count == 0) {
 			$isInsert = true;
 		} else {
@@ -83,7 +83,7 @@ try{
 			//locationテーブルへINSERT
 			$sql=$pdo->prepare('insert into location values(?, ?, ?, ?, ?, ?, ?)');
 			$sql->execute([
-				$device_name,
+				$_GET['device_name'],
 				$_GET['uuid'],
 				$_GET['lat'],
 				$_GET['lon'],
