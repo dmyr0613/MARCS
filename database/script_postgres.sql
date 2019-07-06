@@ -71,6 +71,15 @@ insert into kanja_line values(null, '9000003', '333333333', '菊川LINE');
 	insert into facility values(2, '9876543210', 'MARCS診療所', '9876543210');
 
 insert into device values('dmyr-iPhone6s', 'SBS太田');
+insert into device values('HamiPhone', 'SBS延原');
+insert into device values("Jupon's-iPhone7", 'SBS佐野');
+insert into device values('SugihoiPhone', 'SBS杉保');
+insert into device values('kazu-iPhone', 'SBS松永');
+insert into device values('net121iPhone', 'SBS原田');
+insert into device values('takayama', 'SBS高山');
+
+insert into device values('Maulana', 'SBSアリフ');
+insert into device values('iPhone', 'SBS寺本');
 
 insert into beacon values('D546DF97-4757-47EF-BE09-3E2DCBDD0C77', '医療2階', 'FeasyBeacom');
 insert into beacon values('00000000-14FD-1001-B000-001C4D64F49A', 'ブースB', 'SK19008');
@@ -79,7 +88,12 @@ insert into beacon values('00000000-67FB-1001-B000-001C4DAEA337', 'ブースC', 
 insert into beacon values('00000000-5C83-1001-B000-001C4D265200', 'ブースD', 'SK19011');
 insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', 'ブースE', 'SK19012');
 
+insert into beacon values('00000000-5C83-1001-B000-001C4D265200', '6F交流ホール', 'SK19011');
+insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', '9Fセミナー会場', 'SK19012');
 
+  update beacon
+  set name = '6Fニチイブース'
+  where uuid = '00000000-216E-1001-B000-001C4D64988A'
 
 -- locationからデバイス毎の最新情報を取得する
   select COALESCE(b.name,a.device_name) disp_name,a.device_name,COALESCE(c.name,a.uuid) beacon_name,
@@ -127,3 +141,19 @@ insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', 'ブースE', 
 --削除
  delete from location
   where device_name = 'dmyr-iPhone6s'
+
+  delete from location
+   where update_datetime < '2019/07/03'
+
+   -- 最新のlocationデータを取得する
+   SELECT *
+     FROM location AS A
+    WHERE update_datetime = (
+        SELECT MAX(update_datetime)
+        FROM location AS B
+        WHERE A.device_name = B.device_name
+          AND B.device_name = 'kazu-iPhone'
+          AND B.UUID        = '00000000-14FD-1001-B000-001C4D64F49A'
+        )
+      AND A.device_name     = 'kazu-iPhone'
+      AND A.UUID            = '00000000-14FD-1001-B000-001C4D64F49A'
