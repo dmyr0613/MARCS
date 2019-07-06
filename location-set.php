@@ -36,6 +36,8 @@ try{
 		// $count = $sql->rowCount();
 		// error_log($count);
 
+		// https://sbs-marcs.herokuapp.com/location-set.php?device_name=abc&uuid=1&lat=100&lon=20&prox=near&status=IN
+
 		//最新のlocationデータを取得する
     $sqlText  = 'SELECT * ';
     $sqlText .= '  FROM location AS A';
@@ -50,28 +52,31 @@ try{
 	  $sql=$pdo->prepare($sqlText);
 	  $sql->execute([$_GET['device_name'],$_GET['device_name']]);
 
-		//最新のStatusを取得する
-	  foreach ($sql as $row) {
-			$preStatus = $row['status'];
-			$preUUID = $row['uuid'];
-		}
-
-		$isInsert = false;
-		if ($_GET['status'] == 'OUT') {
-			//OUT書き込み時、同じUUIDで直前がINの場合のみ書き込み
-			if ($preStatus == 'IN' and $preUUID == $_GET['uuid']) {
-				$isInsert = true;
-			}
+		if ($count == 0) {
+			$isInsert = true;
 		} else {
-			//IN書き込み時は、直前がOUTの場合のみ書き込み
-			if ($preStatus == 'OUT') {
-				$isInsert = true;
+			//最新のStatusを取得する
+		  foreach ($sql as $row) {
+				$preStatus = $row['status'];
+				$preUUID = $row['uuid'];
 			}
-		}
 
-		error_log($preUUID);
-		error_log($preStatus);
-		error_log($isInsert);
+			$isInsert = false;
+			if ($_GET['status'] == 'OUT') {
+				//OUT書き込み時、同じUUIDで直前がINの場合のみ書き込み
+				if ($preStatus == 'IN' and $preUUID == $_GET['uuid']) {
+					$isInsert = true;
+				}
+			} else {
+				//IN書き込み時は、直前がOUTの場合のみ書き込み
+				if ($preStatus == 'OUT') {
+					$isInsert = true;
+				}
+			}
+			error_log($preUUID);
+			error_log($preStatus);
+			error_log($isInsert);
+		}
 
 		if ($isInsert) {
 			//locationテーブルへINSERT
