@@ -4,7 +4,8 @@
 <SCRIPT language="JavaScript">
 <!--
   function msgdsp() {
-      alert("メッセージ");
+      // alert("メッセージ");
+      document.write("Samurai");
   }
 // -->
 </SCRIPT>
