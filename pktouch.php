@@ -10,5 +10,7 @@
         <h1 id="title">タイトル</h1>
 
         <script type="text/javascript" src="js.js"></script>
+
+        <INPUT type="button" name="B1" value="TEST" onclick="test()"></P>
     </body>
 </html>
