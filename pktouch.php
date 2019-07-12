@@ -3,16 +3,16 @@
 <BODY>
 <SCRIPT language="JavaScript">
 <!--
-  function msgdsp() {
+  function msgdsp(msg) {
       // alert("メッセージ");
-      document.write("Samurai");
+      document.write(msg);
   }
 // -->
 </SCRIPT>
 <FORM method="POST"><P>
 <INPUT type="button" name="B1"
 value="TEST"
-onclick="msgdsp()"></P>
+onclick="msgdsp('テスト')"></P>
 </FORM>
 </BODY>
 </HTML>
