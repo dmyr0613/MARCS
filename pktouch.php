@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/admin-main.css" />
+<!-- <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css"> -->
 </head>
 
 <BODY>
@@ -16,12 +17,39 @@
       // alert("メッセージ");
       document.write(msg);
   }
+
+  function msgDisp(msg){
+	// 値を設定
+	document.formMain.barcode.value = msg;
+  }
+  function msgClear(){
+  	document.formMain.barcode.value = ""; //クリア
+  }
 // -->
 </SCRIPT>
-<FORM method="POST"><P>
-<INPUT type="button" name="B1"
-value="TEST"
-onclick="msgdsp('テスト')"></P>
-</FORM>
+
+
+<!-- Main -->
+	<div id="main">
+		<div class="inner">
+
+				<!-- reserveMain -->
+				<section id="userinfoMain">
+
+          <!-- loginpage -->
+  				<section id="loginpage">
+  					<form name="formMain" method="post">
+  					バーコード<input type="text" name="barcode"><br>
+            <!-- <INPUT type="button" name="B1" value="TEST" onclick="msgdsp('テスト')"> -->
+            <input type="button" value="設定" onclick="msgDisp('テスト')">
+            <input type="button" value="クリア" onclick="msgClear()">
+  					</form>
+  				</section>
+
+				</section>
+
+			</div>
+		</div>
+
 </BODY>
 </HTML>
