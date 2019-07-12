@@ -11,6 +11,8 @@
 
         <script type="text/javascript" src="js.js"></script>
 
-        <INPUT type="button" name="B1" value="TEST" onclick="test()"></P>
+        <FORM method="POST">
+        <P><INPUT type="button" name="B1" value="TEST" onclick="test()"></P>
+        </FORM>
     </body>
 </html>
