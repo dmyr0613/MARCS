@@ -91,9 +91,27 @@ insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', 'ブースE', 
 insert into beacon values('00000000-5C83-1001-B000-001C4D265200', '6F交流ホール', 'SK19011');
 insert into beacon values('00000000-C5E4-1001-B000-001C4D495191', '9Fセミナー会場', 'SK19012');
 
+--SK19008
   update beacon
-  set name = '6Fニチイブース'
-  where uuid = '00000000-216E-1001-B000-001C4D64988A'
+  set name = 'ブース1'
+  where uuid = '00000000-14FD-1001-B000-001C4D64F49A';
+--SK19009
+  update beacon
+  set name = 'ブース2'
+  where uuid = '00000000-216E-1001-B000-001C4D64988A';
+--SK19010
+  update beacon
+  set name = 'ブース3'
+  where uuid = '00000000-67FB-1001-B000-001C4DAEA337';
+--SK19011
+  update beacon
+  set name = 'ブース4'
+  where uuid = '00000000-5C83-1001-B000-001C4D265200';
+--SK19012
+  update beacon
+  set name = 'ブース5'
+  where uuid = '00000000-C5E4-1001-B000-001C4D495191';
+
 
 -- locationからデバイス毎の最新情報を取得する
   select COALESCE(b.name,a.device_name) disp_name,a.device_name,COALESCE(c.name,a.uuid) beacon_name,
