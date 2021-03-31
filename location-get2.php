@@ -33,16 +33,19 @@
 
   $json_array = array();
 
+
+  $i = 1;
   foreach ($sql as $row) {
     //JSON形式にする
-    $row_array['trackId'] = $row['disp_name'];
+    $row_array['trackId'] = $i;
     $row_array['trackName'] = $row['beacon_name'];
     $row_array['artistName'] = $row['disp_name'];
     $row_array['formattedPrice'] = $row['uuid'];
     $row_array['currency'] = $row['proximity'];
-    
+
     array_push($json_array,$row_array);
     // error_log(print_r($json_array, true));
+    $i++;
   }
 
   //半分おまじない。JSONで送りますよという合図
