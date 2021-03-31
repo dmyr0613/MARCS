@@ -53,6 +53,23 @@
   //JSON 形式にエンコードしてechoでPOST送信
   // echo json_encode($json_array);
 
-  $arr = json_encode($arr);
-  file_put_contents("test.json" , $arr);
+  $arr = array(
+      "resultCount" => 2,
+          "results" => array([
+              "trackId" => 1,
+              "trackName" => "AAAA",
+              "artistName" => "BBBB",
+              "formattedPrice" => "2000",
+              "currency" => "Yen"
+          ],
+          [
+            "trackId" => 2,
+            "trackName" => "CCCC",
+            "artistName" => "DDDD",
+            "formattedPrice" => "2500",
+            "currency" => "Doller"
+          ])
+  );
+  echo json_encode($arr);
+
 ?>
