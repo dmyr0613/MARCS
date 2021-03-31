@@ -51,6 +51,8 @@
   //半分おまじない。JSONで送りますよという合図
   // header("Content-Type: text/javascript; charset=utf-8");
   //JSON 形式にエンコードしてechoでPOST送信
-  echo json_encode($json_array);
+  // echo json_encode($json_array);
 
+  $arr = json_encode($arr);
+  file_put_contents("test.json" , $arr);
 ?>
