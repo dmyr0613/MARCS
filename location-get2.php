@@ -53,27 +53,11 @@
   //JSON 形式にエンコードしてechoでPOST送信
   // echo json_encode($json_array);
 
-  // $arr = array(
-  //     // "resultCount" => 2,
-  //         "results" => array([
-  //             "trackId" => 1,
-  //             "trackName" => "AAAA",
-  //             "artistName" => "BBBB",
-  //             "formattedPrice" => "2000",
-  //             "currency" => "Yen"
-  //         ],
-  //         [
-  //           "trackId" => 2,
-  //           "trackName" => "CCCC",
-  //           "artistName" => "DDDD",
-  //           "formattedPrice" => "2500",
-  //           "currency" => "Doller"
-  //         ])
-  // );
-
+  //Swiftでの取得時には、手前に括弧が必要？
   $arr = array(
     "results" => $json_array
   );
+  //JSON 形式にエンコードしてechoでPOST送信
   echo json_encode($arr);
 
 ?>
